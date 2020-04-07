@@ -1,14 +1,13 @@
-import React from 'react'
-import Login from 'components/Login';
-import {
-    Container,
-    Divider,
-    Dropdown,
-    Grid,
-    Header,
-    Image,
-    List,
-    Menu,
-    Segment,
-} from 'semantic-ui-react'
-import logo from 'image/logo.png';
+import React, {Component} from 'react';
+
+class Header extends Component {
+    render() {
+        return (
+            <div>
+                This is Header page
+            </div>
+        )
+    }
+};
+
+export default Header;
