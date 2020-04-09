@@ -10,15 +10,18 @@ import Login from './container/Login';
 
 class App extends Component {
 
-    render() {      
+    render() {
         return (
-            <div>
+            <main>
+            <Switch>
                 <Route exact path="/" component={Main} />
                 <Route path="/signup/:signupId" component={Signup} />
-                <Route path="/login/:loginId" component={Login} />
-            </div>
+                <Route path="/login" component={Login} />
+                </Switch>
+            </main>
         );
     }
+
 }
 
 export default App;

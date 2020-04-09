@@ -1,20 +1,31 @@
 import React, { Component } from 'react';
 import Header from "../components/Header";
-import Gnb from "../components/Gnb";
 import Footer from "../components/Footer";
 
+
 class Login extends Component {
+
+    activeSignup = (e) => {
+        console.log("login");
+    }
 
     render() {
         return (
             <div>
                 <Header />
-                <Gnb/>
-                <div>Login</div>
+
+                <div> login </div>
+                <div style={{ marginLeft: "300px", marginTop: "300px" }}/>
+                <kakao-login-btn />
+
+
                 <Footer/>
             </div>
         )
     }
+
+
 }
+
 
 export default Login;
