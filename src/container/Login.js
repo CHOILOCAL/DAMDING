@@ -16,8 +16,10 @@ class Login extends Component {
 
                 <div> login </div>
                 <div style={{ marginLeft: "300px", marginTop: "300px" }}/>
+
                 <kakao-login-btn />
 
+                <button href="/signup">회원가입</button>
 
                 <Footer/>
             </div>

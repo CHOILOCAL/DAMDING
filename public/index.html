@@ -17,6 +17,7 @@
 
 <!--    kakaotalk SDK -->
     <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
+
   </head>
 
   <body>
@@ -26,6 +27,9 @@
 <!--    kakao login button -->
     <a id="kakao-login-btn"></a>
     <a href="http://developers.kakao.com/logout"></a>
+
+    <div id="naverIdLogin"></div>
+
     <script type='text/javascript'>
 
       Kakao.init('5fb1a887f51b3b3a1d1a76c41b9b545a');
@@ -43,6 +47,8 @@
           alert(JSON.stringify(err));
         }
       });
+
+
 
     </script>
 
