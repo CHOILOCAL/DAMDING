@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>KakaoLogin</title>
+<!--    kakao SDK  -->
+    <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
+</head>
+<body>
+
+<!--    kakao login button -->
+<a id="kakao-login-btn"></a>
+<a href="http://developers.kakao.com/logout"></a>
+
+</body>
+<script type='text/javascript'>
+
+<!--    kakao login  -->
+Kakao.init('5fb1a887f51b3b3a1d1a76c41b9b545a');
+Kakao.Auth.createLoginButton({
+    container: '#kakao-login-btn',
+    success: function(authObj) {
+        alert(JSON.stringify(res)); // kakao.api.request 결과값 json형태 출력
+        alert(JSON.stringify(authObj)); // kakao.auth.createloginbutton 결과값 json형태 출력
+        console.log(res.id);
+        console.log(res.kaccout_email);
+        console.log(res.properties['nickname']);
+        console.log(authObj.access_token); // console.log 토큰값 출력
+    },
+    fail: function(err) {
+        alert(JSON.stringify(err));
+    }
+});
+
+</script>
+</html>

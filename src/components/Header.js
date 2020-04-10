@@ -29,9 +29,9 @@ class Header extends React.Component {
                         <Nav className="mr-auto">
                             <Nav.Link href="/">메인</Nav.Link>
                             <Nav.Link href="/about">About 담딩투어</Nav.Link>
-                            <Nav.Link href="/tour">투어설명서</Nav.Link>
+                            <Nav.Link href="/exp">투어설명서</Nav.Link>
                             <Nav.Link href="/product">투어상품</Nav.Link>
-                            <Nav.Link href="/together">동행구하기</Nav.Link>
+                            <Nav.Link href="/withme">동행구하기</Nav.Link>
                             <Nav.Link href="/box">담딩박스</Nav.Link>
                             <Nav.Link href="/gallery">갤러리</Nav.Link>
                             <Nav.Link href="/qna">문의</Nav.Link>

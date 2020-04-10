@@ -1,5 +1,6 @@
 import React from "react";
 
+import '../scss/gnb.scss'
 import ResponsiveEmbed from 'react-bootstrap/ResponsiveEmbed'
 
 

@@ -1,16 +1,18 @@
-import React from "react";
-import {Col, Container, Row} from "react-bootstrap";
+import React, {Component} from "react";
+import {Container} from "react-bootstrap";
 
-const SubMain03 = () => (
+import '../scss/submain.scss';
 
-    <Container fluid>
-        <div className="SubMain03" style={{ width: '500px', height: '500px'}}>
-            <Row>
-                <Col>SubMain03 of 03</Col>
-            </Row>
-        </div>
-    </Container>
+class SubMain03 extends Component {
 
-)
+    render() {
+        return (
+            <Container fluid>
+                <div className="submain">sub3</div>
+            </Container>
+        );
+    }
+}
+
 
 export default SubMain03;
