@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 
+import '../login/kakaoLogin';
 
 class Login extends Component {
 
@@ -19,7 +20,7 @@ class Login extends Component {
 
                 <kakao-login-btn />
 
-                <button href="/signup">회원가입</button>
+                <button href="/signup/123">회원가입</button>
 
                 <Footer/>
             </div>

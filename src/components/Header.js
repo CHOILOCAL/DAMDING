@@ -23,7 +23,7 @@ class Header extends React.Component {
                     <Navbar bg="light" variant="light" fixed='top'>
                         {/* Title */}
                         <Image src="http://placehold.it/30x30" style={{ marginLeft: '10px', marginRight: '20px'}}/>
-                        <Navbar.Brand href="#">D A M D E E N G</Navbar.Brand>
+                        <Navbar.Brand href="/">D A M D E E N G</Navbar.Brand>
 
                         {/* Menu */}
                         <Nav className="mr-auto">
