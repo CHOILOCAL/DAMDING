@@ -16,6 +16,8 @@ import '@fortawesome/fontawesome-free/css/all.min.css';
 // import 'bootstrap-css-only/css/bootstrap.min.css'; import
 // 'mdbreact/dist/css/mdb.css';
 
+import '../../css/Header.css';
+
 class Header extends React.Component {
 
     activeLogin = (e) => {
@@ -29,7 +31,7 @@ class Header extends React.Component {
                     <Navbar bg="light" variant="light" fixed='top'>
 
                         {/* Title */}
-                        <Image
+                        <Image className="HeaderMainImage"
                             src="http://placehold.it/30x30"
                             style={{
                                 marginLeft: '10px',

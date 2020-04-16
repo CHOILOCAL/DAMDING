@@ -3,7 +3,7 @@
     margin: auto;
     margin-top: 4%;
     width: 95%;
-    height: 40em;
+    height: 3em;
     background-color: rgb(236, 236, 232);
 }
 
@@ -23,6 +23,20 @@
 .Navigate-page-num {
     position: absolute;
     left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.NavigateLeftButton {
+    position: absolute;
+    left: 20%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.NavigateRightButton {
+    position: absolute;
+    right: 20%;
     top: 50%;
     transform: translate(-50%, -50%);
 }

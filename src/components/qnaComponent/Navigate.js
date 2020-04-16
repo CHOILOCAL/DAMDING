@@ -4,6 +4,7 @@ import '../../css/Naviage.css';
 
 const Navigate = ({onClick, postId, disabled}) => (
     <div className="Navigate">
+        <div className="NavigateLeftButton">
         <Button
             color="teal"
             content="Previous"
@@ -13,9 +14,11 @@ const Navigate = ({onClick, postId, disabled}) => (
             disabled={disabled}
             className="Navigate-left-button"
         />
+        </div>
         <div className="Navigate-page-num">
             {postId}
         </div>
+        <div className="NavigateRightButton">
         <Button
             color="teal"
             content="Next"
@@ -24,7 +27,8 @@ const Navigate = ({onClick, postId, disabled}) => (
             onClick={() => onClick('NEXT')}
             disabled={disabled}
             className="Navigate-right-button"
-        /> 
+        />
+        </div>
     </div>
 );
 
