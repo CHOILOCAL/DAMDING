@@ -122,7 +122,7 @@ class QnaContainer extends Component {
                 <Header />
                 <QnaWrapper>
                     <Navigate postId={postId} disable={fetching} onClick={this.handleNavigateClick} />
-                    <QnaPost title={post.title} body={post.body} comments={comments}/>
+                    <QnaPost postId={postId} title={post.title} body={post.body} comments={comments}/>
                     <Warning visible={warningVisibility} message="페이지가 존재하지 않습니다."/>
                     </QnaWrapper>
                 <Footer />
