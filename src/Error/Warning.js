@@ -4,42 +4,42 @@ import "../animation/Warning.css";
 
 class Warning extends Component {
 
-    // constructor(props) {
-    //     super(props);
-    //     this.state = {
-    //         closing: false
-    //     };
-    // }
+    constructor(props) {
+        super(props);
+        this.state = {
+            closing: false
+        };
+    }
 
-    // componentWillReceiveProps(nextprops) {
-    //     if(this.props.visible && !nextprops.visible) {
-    //         this.setState({
-    //             closing: true
-    //         });
+    componentWillReceiveProps (nextprops) {
+        if(this.props.visible && !nextprops.visible) {
 
-    //         setTimeout(
-    //             () => {
-    //                 this.setState({
-    //                     closing: false
-    //                 });
-    //             }, 1000
-    //         );
-    //     }
-    // }
+            this.setState({
+                closing: true
+            });
 
-
+            setTimeout(
+                () => {
+                    this.setState({
+                        closing: false
+                    });
+                }, 1000
+            );
+        }
+    }
+ 
     render() {
         
         const { visible, message } = this.props;
-        // const { closing } = this. state;
+        const { closing } = this. state;
 
-        // if(!visible && !closing) {
-            // return null
-        // }
+        if(!visible && !closing) {
+            return null
+        }
 
         return (
             <div className="Warning-wrapper">
-                <div className="Warning animated bounceIn">                
+                <div className={`Warning ${closing?'zoomInUp':'zoomInUp'} animated`}>                
                     { message }
                 </div>
             </div>

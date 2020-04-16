@@ -34,6 +34,22 @@ class QnaContainer extends Component {
         console.log("comments : " + this.state.comments[0]); // index[0]
     }
 
+    showWarning = () => {
+        this.setState({
+            warningVisibility: true
+        });
+
+        // 1.5초 후에
+
+        setTimeout(
+            () => {
+                this.setState({
+                    warningVisibility: false
+                });
+            }, 1500
+        );
+    }
+
     // src > services > post.js API 호출
     fetchPostInfo = async (postId) => {
 
@@ -99,7 +115,7 @@ class QnaContainer extends Component {
 
         // 하위 component에 props로 값 전달 <비구조화 할당 문법>
         // <비구조화 할당 문법> this.state.post.title => post.title 간략 사용 가능
-        const { postId, fetching, post, comments } = this.state;
+        const { postId, fetching, post, comments, warningVisibility } = this.state;
 
         return(
             <div>
@@ -107,7 +123,7 @@ class QnaContainer extends Component {
                 <QnaWrapper>
                     <Navigate postId={postId} disable={fetching} onClick={this.handleNavigateClick} />
                     <QnaPost title={post.title} body={post.body} comments={comments}/>
-                    <Warning message="페이지가 존재하지 않습니다." />
+                    <Warning visible={warningVisibility} message="페이지가 존재하지 않습니다."/>
                     </QnaWrapper>
                 <Footer />
             </div>
