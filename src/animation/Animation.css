@@ -1,4 +1,6 @@
 /*base code*/
+/* AniCollection - The easiest way to find, use and share CSS3 animations. */
+/*  http://anicollection.github.io/#/ */
 .animated {
     -webkit-animation-duration: 1s;
     animation-duration: 1s;
