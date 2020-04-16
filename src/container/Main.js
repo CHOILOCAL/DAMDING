@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 
-import Header from '../components/Header';
+import Header from '../components/Header/Header';
 import Gnb from "../components/Gnb";
-import Footer from "../components/Footer";
+import Footer from "../components/Footer/Footer";
 import Intro from "../components/Intro";
 import SubMain01 from "../components/SubMain01";
 import SubMain02 from "../components/SubMain02";

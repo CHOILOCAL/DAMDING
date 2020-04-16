@@ -1,0 +1,12 @@
+.QnaWrapper {
+    width: 115em;
+    height: 100%;
+    margin: auto;
+    background-color: rgb(245, 239, 231);
+}
+
+@media (max-width: 768px) {
+    .QnaWrapper {
+        width: 90%;    
+    }
+}

@@ -14,7 +14,7 @@ import ExpComponent from "./components/expComponent/ExpComponent";
 import BoxComponent from "./components/boxComponent/BoxComponent";
 import GalleryComponent from "./components/galleryComponent/GalleryComponent";
 import ProductComponent from "./components/productComponent/ProductComponent";
-import QnaComponent from "./components/qnaComponent/QnaComponent";
+import QnaComponent from "./container/QnaContainer";
 import WithMeComponent from "./components/withMeComponent/WithMeComponent";
 
 // naver login api

@@ -1,15 +1,30 @@
-const exprss = require('express');
-const app = exprss();
+var express = require('express');
+var app = express();
+var user = require('../routes/user');
 
-const bodyParser = require('body-parser');
-const port = process.env.PORT || 3001;
+var morgan = require('morgan');
+var bodyParser = require('body-parser');
 
-app.use(cors());
+app.use(morgan('dev'));
+app.use(bodyParser.json());
 
-app.use(bodyParser.json()); // server에서 json형식으로 받아옴
-app.use('/api', (req, res) =>
-    res.json({username:'choihyunij'}));
+app.use('/', express.static('public'));
 
-app.listen(port, ()=>{
-    console.log("express is running on ${port} 🟩 ");
-})
+// var myLogger = function(req, res, next) {
+//     console.log(req.url);
+//     next();
+// };
+
+// app.use(myLogger);
+
+app.get('/', function(req, res){
+    //
+    res.send('hello world');
+});
+
+app.use('/user', user);
+
+app.listen(3000, function(){
+    console.log('example router is listening on port 3000 🟩');
+});
+
