@@ -14,6 +14,13 @@ import './animation/Animation.css';
 import './animation/Warning.css';
 // import App from './App';
 
+import Promise from 'promise-polyfill';
+
+// axios IE8 지원
+if (!window.Promise) {
+    window.Promise = Promise;
+}
+
 ReactDOM.render(<Root />, document.getElementById('root'));
 
 serviceWorker.unregister();
