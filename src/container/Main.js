@@ -8,6 +8,8 @@ import SubMain01 from "../components/SubMain01";
 import SubMain02 from "../components/SubMain02";
 import SubMain03 from "../components/SubMain03";
 
+import '../animation/Animation.css';
+import '../animation/Warning.css';
 
 class Main extends Component {
 

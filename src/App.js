@@ -17,6 +17,9 @@ import ProductComponent from "./components/productComponent/ProductComponent";
 import QnaComponent from "./container/QnaContainer";
 import WithMeComponent from "./components/withMeComponent/WithMeComponent";
 
+import './animation/Animation.css';
+import './animation/Warning.css';
+
 // naver login api
 // var passport = require('passport');
 
