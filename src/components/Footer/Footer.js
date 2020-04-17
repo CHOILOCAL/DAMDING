@@ -3,8 +3,6 @@ import React from "react";
 import Navbar from 'react-bootstrap/Navbar'
 import {Container, Nav} from "react-bootstrap";
 
-
-
 class Footer extends React.Component {
 
     render() {
