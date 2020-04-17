@@ -12,6 +12,8 @@ var user = require('../routes/user');
 var morgan = require('morgan');
 var bodyParser = require('body-parser');
 
+var path = require('path');
+
 app.use(morgan('dev'));
 app.use(bodyParser.json());
 
@@ -67,4 +69,10 @@ app.use('/api', api);
 app.use(function(err, req, res, next) {
     console.log(err.stack);
     res.status(500).send('무언가 잘못됨.. 라우터에서 이상함');
+});
+
+/* support client-side routing */
+// URL 입력시 클라이언트사이드 라우팅 작동 확인
+app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, './../public/index.html'));
 });

@@ -4,10 +4,11 @@ import Footer from "../components/Footer/Footer";
 
 import { Form, Col, Button } from 'react-bootstrap';
 
+import Authentication from '../components/Authentication/Authentication';
 class Signup extends Component {
 
     activeSignup = (e) => {
-        console.log("login");
+        console.log("signup");
     }
 
     render() {
@@ -15,9 +16,10 @@ class Signup extends Component {
             <div>
                 <Header />
 
+                <Authentication mode={false} />
+
                 <div style={{ marginTop: "100px", marginRight: "100px", marginLeft: "100px" }}>
                     <div style={{ marginTop: "100px", marginRight: "300px", marginLeft: "300px" }}>
-
                         {/* login popup */}
                         {/* 이름, 아이디, (중복확인) 패스워드, 패스워드확인, 생년월일, 성별, 이메일 (중복확인), 휴대폰 번호(본인확인), 주소, 가입 계기, 담딩투어 경험자/비경험 */}
                         <Form>

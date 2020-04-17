@@ -21,6 +21,8 @@ if (!window.Promise) {
     window.Promise = Promise;
 }
 
-ReactDOM.render(<Root />, document.getElementById('root'));
+const rootElement = document.getElementById('root');
+
+ReactDOM.render(<Root />, rootElement);
 
 serviceWorker.unregister();

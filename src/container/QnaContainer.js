@@ -77,6 +77,7 @@ class QnaContainer extends Component {
             const comments = info[1].data;
     
             console.log("comments : " + comments);
+            console.log("comments[0] : " + JSON.stringify(comments[0], null, 4));
     
             this.setState({
                 postId,
