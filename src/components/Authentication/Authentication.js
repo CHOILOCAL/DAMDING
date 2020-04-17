@@ -1,13 +1,29 @@
 import React from 'react';
 
 import "../../css/Authentication.css";
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import '../../css/Authentication.css';
 
-import {Form, Col, Button} from 'react-bootstrap';
+import { Form, Col } from 'react-bootstrap';
 
 class Authentication extends React.Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            username: "",
+            password: ""
+        };
+        this.handleChange = this.handleChange.bind(this);
+    }
+
+    handleChange(e) {
+        let nextState = {};
+        nextState[e.target.name] = e.target.value;
+        this.setState(nextState);
+    }
+
     render() {
 
         // 회원가입, 로그인 뷰에서 보이는 중복 코드

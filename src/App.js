@@ -1,7 +1,7 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-import React, { Component } from 'react';
-import { Route, Switch } from 'react-router-dom';
+import React, {Component} from 'react';
+import {Route} from 'react-router-dom';
 
 // container
 import Main from './container/Main';
@@ -20,31 +20,25 @@ import WithMeComponent from "./components/withMeComponent/WithMeComponent";
 import './animation/Animation.css';
 import './animation/Warning.css';
 
-// naver login api
-// var passport = require('passport');
-
-// var app = express();
-
-// app.use(passport.initialize());
-// app.use(passport.session());
+// Redux naver login api var passport = require('passport'); var app =
+// express(); app.use(passport.initialize()); app.use(passport.session());
 
 class App extends Component {
 
     render() {
+
         return (
             <main>
-            <Switch>
-                <Route exact path="/" component={Main} />
-                <Route path="/signup" component={Signup} />
-                <Route path="/login" component={Login} />
-                <Route path="/about" component={AboutComponent} />
-                <Route path="/exp" component={ExpComponent} />
-                <Route path="/product" component={ProductComponent} />
-                <Route path="/withme" component={WithMeComponent} />
-                <Route path="/qna" component={QnaComponent} />
-                <Route path="/gallery" component={GalleryComponent} />
-                <Route path="/box" component={BoxComponent} />
-            </Switch>
+                <Route exact="exact" path="/" component={Main}/>
+                <Route path="/signup" component={Signup}/>
+                <Route path="/login" component={Login}/>
+                <Route path="/about" component={AboutComponent}/>
+                <Route path="/exp" component={ExpComponent}/>
+                <Route path="/product" component={ProductComponent}/>
+                <Route path="/withme" component={WithMeComponent}/>
+                <Route path="/qna" component={QnaComponent}/>
+                <Route path="/gallery" component={GalleryComponent}/>
+                <Route path="/box" component={BoxComponent}/>
             </main>
         );
     }
