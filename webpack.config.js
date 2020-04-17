@@ -1,8 +1,11 @@
 var webpack = require('webpack');
 
-module.exports = {
-    entry: './src/index.js',
+var path = require('path');
 
+module.exports = {
+    entry: ['./src/index.js',
+           './src/css/style.css'
+    ],
     output: {
         path: __dirname + '/public/',
         filename: 'bundle.js'
@@ -16,11 +19,16 @@ module.exports = {
         contentBase: __dirname + '/public/'
     },
 
+    // require('path')
+    resolve: {
+        root: path.resolve('./src')
+    },
+
     module: {
             loaders: [
                 {
-                    test: /\.js$/,
-                    loader: 'babel-loader', 
+                    test: /\.css$/,
+                    loader: 'style!css-loader',
                     exclude: /node_modules/,
                     query: {
                         cacheDirectory: true,

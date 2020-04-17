@@ -37,7 +37,7 @@ class Header extends React.Component {
                                 marginLeft: '10px',
                                 marginRight: '20px'
                             }}/>
-                        <Navbar.Brand href="/">D A M D E E N G</Navbar.Brand>
+                        <Navbar.Brand href="/">D A M D I N G</Navbar.Brand>
 
                         {/* Menu */}
                         <div>
