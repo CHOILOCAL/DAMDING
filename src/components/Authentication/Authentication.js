@@ -5,31 +5,43 @@ import {Link} from 'react-router-dom';
 
 import '../../css/Authentication.css';
 
+import { Form, Button } from 'react-bootstrap';
+
 class Authentication extends React.Component {
     render() {
 
-        // 로그인 뷰
+        // 로그인 뷰 <input name="username" type="text" className="validate"/> <input
+        // name="password" type="password" className="validate"/> <a>로그인</a> <Link
+        // to="/register">회원가입</Link>
         const loginView = (
             <div>
                 <div className="card-content">
                     <div className="row">
                         <div className="input-field col s12 username">
                             <label>아이디</label>
-                            <input name="username" type="text" className="validate"/>
+                            <input
+                            name="username"
+                            type="text"
+                            className="validate"
+                            placeholder="아이디" />
                         </div>
                         <div className="input-field col s12">
                             <label>비밀번호</label>
-                            <input name="password" type="password" className="validate"/>
+                            <input
+                            name="password"
+                            type="password"
+                            className="validate"
+                            placeholder="비밀번호"/>
                         </div>
-                        <a>로그인</a>
+                        <a className="waves-effect waves-light btn">로그인</a>
                     </div>
                 </div>
 
+
                 <div className="footer">
                     <div className="card-content">
-                        <div className="right">
-                            아이디가 없다면 회원가입 하세요
-                            <Link to="/register">회원가입</Link>
+                        <div className="right" >
+                        아이디 없음? <Link to="/signup">회원가입하러가기</Link>
                         </div>
                     </div>
                 </div>
