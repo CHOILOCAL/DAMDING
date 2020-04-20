@@ -71,3 +71,5 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/tr
 
 express server start
 node ./servers/server.js
+
+2020. 04. 20 코드 정리 전 commit 시점입니다. 
