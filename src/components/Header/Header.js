@@ -73,14 +73,14 @@ class Header extends React.Component {
                         </div>
 
                         <Form inline="inline">
-                            <i
+                            {/* <i
                                 className="fas fa-search"
                                 style={{
                                     width: 'auto',
                                     height: 'auto',
                                     marginRight: '10px'
-                                }}></i>
-                            <FormControl type="text" placeholder="검색어를 입력하세요" className="mr-sm-2"/>
+                                }}></i> */}
+                            {/* <FormControl type="text" placeholder="검색어를 입력하세요" className="mr-sm-2"/> */}
                             <div>
                                 {
                                     this.props.isLoggedIn
