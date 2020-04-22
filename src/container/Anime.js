@@ -7,7 +7,51 @@ import {Link} from 'react-router-dom';
 class Anime extends Component {
 
     handleAnimatipon = () => {
-        var textWrapper = document.querySelector('.ml6 .letters');
+        var ml4 = {};
+        ml4.opacityIn = [0, 1];
+        ml4.scaleIn = [0.2, 1];
+        ml4.scaleOut = 3;
+        ml4.durationIn = 800;
+        ml4.durationOut = 600;
+        ml4.delay = 500;
+
+        anime
+            .timeline({loop: true})
+            .add(
+                {targets: '.ml4 .letters-1', opacity: ml4.opacityIn, scale: ml4.scaleIn, duration: ml4.durationIn}
+            )
+            .add({
+                targets: '.ml4 .letters-1',
+                opacity: 0,
+                scale: ml4.scaleOut,
+                duration: ml4.durationOut,
+                easing: "easeInExpo",
+                delay: ml4.delay
+            })
+            .add(
+                {targets: '.ml4 .letters-2', opacity: ml4.opacityIn, scale: ml4.scaleIn, duration: ml4.durationIn}
+            )
+            .add({
+                targets: '.ml4 .letters-2',
+                opacity: 0,
+                scale: ml4.scaleOut,
+                duration: ml4.durationOut,
+                easing: "easeInExpo",
+                delay: ml4.delay
+            })
+            .add(
+                {targets: '.ml4 .letters-3', opacity: ml4.opacityIn, scale: ml4.scaleIn, duration: ml4.durationIn}
+            )
+            .add({
+                targets: '.ml4 .letters-3',
+                opacity: 0,
+                scale: ml4.scaleOut,
+                duration: ml4.durationOut,
+                easing: "easeInExpo",
+                delay: ml4.delay
+            })
+        // .add({targets: '.ml4', opacity: 0, duration: 10, delay: 10}); comming soon
+        var textWrapper = document.querySelector('.ml10 .letters');
         textWrapper.innerHTML = textWrapper
             .textContent
             .replace(/\S/g, "<span class='letter'>$&</span>");
@@ -15,16 +59,15 @@ class Anime extends Component {
         anime
             .timeline({loop: true})
             .add({
-                targets: '.ml6 .letter',
-                translateY: [
-                    "1.1em", 0
+                targets: '.ml10 .letter',
+                rotateY: [
+                    -90, 30
                 ],
-                translateZ: 0,
-                duration: 750,
-                delay: (el, i) => 50 * i
+                duration: 1300,
+                delay: (el, i) => 45 * i
             })
             .add(
-                {targets: '.ml6', opacity: 0, duration: 1000, easing: "easeOutExpo", delay: 1000}
+                {targets: '.ml10', opacity: 100, duration: 1000, easing: "easeOutExpo", delay: 1000}
             );
     }
 
@@ -35,22 +78,16 @@ class Anime extends Component {
     render() {
 
         return (
-            <div>
-            {/* <Link to="/main"> */}
-                    <h1 class="ml6">
-                        <span class="text-wrapper">
-                            <span class="letters">담딩투어</span>
-                            <span class="letters2">DAMDING</span>
-                            <span class="letters3">테스트</span>
-                            <Link to="/main">
-                            <h1 class="">바로가기
-                            </h1>
-                            </Link>
-                        </span>
-                    </h1>
-
-                    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
-            {/* </Link> */}
+            <div class="bg">
+                <h1 class="ml10">
+                    <span class="text-wrapper">
+                        <Link to="/main" class="bg"><span class="letters">DAMDING TOUR</span></Link>
+                    </span>
+                </h1>
+                <h1 class="ml4">
+                    <span class="letters letters-1">Comming Soon !</span>
+                </h1>
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
             </div>
         )
     }
