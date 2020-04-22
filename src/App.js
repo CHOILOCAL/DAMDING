@@ -4,6 +4,7 @@ import React, {Component} from 'react';
 import {Route} from 'react-router-dom';
 
 // container
+import Anime from './container/Anime';
 import Main from './container/Main';
 import Signup from './container/Signup';
 import Login from './container/Login';
@@ -33,7 +34,8 @@ class App extends Component {
 
         return (
             <main>
-                <Route exact="exact" path="/" component={Main}/>
+                <Route exact="exact" path="/" component={Anime}/>
+                <Route exact="/main" path="/main" component={Main}/>
                 <Route path="/signup" component={Signup}/>
                 <Route path="/login" component={Login}/>
                 <Route path="/about" component={AboutContainer}/>
@@ -42,9 +44,7 @@ class App extends Component {
                 <Route path="/withme" component={WithMeComponent}/>
                 <Route path="/qna" component={QnaContainer}/>
                 <Route path="/gallery" component={GalleryComponent}/>
-                <Route path="/box" component={BoxComponent}/>
-
-                {/* boards routing */}
+                <Route path="/box" component={BoxComponent}/> {/* boards routing */}
                 <Route path='/gallery/edit/:id' component={Edit}/>
                 <Route path='/gallery/create' component={Create}/>
                 <Route path='/gallery/show/:id' component={Show}/>
