@@ -20,26 +20,44 @@ import '@fortawesome/fontawesome-free/css/all.min.css';
 
 import '../../css/Header.css';
 
+// import firebase, { auth, provider } from '../../Firebase';
+
 class Header extends React.Component {
 
-    activeLogin = (e) => {
-        console.log("login");
+    constructor() {
+        super();
+        this.state = {
+            // user: null // 처음 로그인시에는 로그인되어있지 않은 상태
+        };
+        // this.login = this.login.bind(this);
+        // this.logout = this.logout.bind(this);
     }
 
-    activeLogout = (e) => {
+    login = (e) => {
+        console.log("login");
+        // auth.signInWithPopup(provider).then((result) => {
+        //     const user = result.user;
+        //     this.setState({
+        //         user
+        //     });
+        // });
+    }
+
+    logout = (e) => {
         console.log("logout");
+        // session end
     }
 
     render() {
 
         // 로그인 전
         const loginButton = (
-            <Link to="/login"><Button variant="outline-primary" onClick={this.activeLogin} href="/main">로그인</Button></Link>
+            <Link to="/login"><Button variant="outline-primary" onClick={this.login} href="/main">로그인</Button></Link>
         );
 
         // 로그인 후
         const logoutButton = (
-            <Link to="/"><Button variant="outline-primary" onClick={this.activeLogout} href="/main">로그아웃</Button></Link>
+            <Link to="/main"><Button variant="outline-primary" onClick={this.logout} href="/main">로그아웃</Button></Link>
         );
 
         return (
@@ -56,7 +74,7 @@ class Header extends React.Component {
                                 marginRight: '20px'
                             }}/>
                             {/* Link Component는 새로운 로딩을 막고 라우트에 보여지는 내용만 변하게 한다 */}
-                        <Link to="/"><Navbar.Brand href="/">D A M D I N G</Navbar.Brand></Link>
+                        <Link to="/main"><Navbar.Brand href="/main">D A M D I N G</Navbar.Brand></Link>
 
                         {/* Menu */}
                         <div>

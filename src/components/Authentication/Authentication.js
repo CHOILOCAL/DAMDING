@@ -1,27 +1,78 @@
 import React from 'react';
 
 import "../../css/Authentication.css";
-import { Link } from 'react-router-dom';
+import {Link} from 'react-router-dom';
 
 import '../../css/Authentication.css';
 
-import { Form, Col } from 'react-bootstrap';
+import {Form, Col} from 'react-bootstrap';
+
+import firebase, {auth, provider} from '../../Firebase';
 
 class Authentication extends React.Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            username: "",
-            password: ""
+            username: '',
+            password: '',
+            user: null // 처음 로그인시에는 로그인되어있지 않은 상태
         };
-        this.handleChange = this.handleChange.bind(this);
+
+        // functionName(e) => {} 함수를 쓰면 bind 안해줘도 됨 ㅇㅇ
+        // this.handleChange = this
+        //     .handleChange
+        //     .bind(this);
+
+        this.login = this
+            .login
+            .bind(this);
+        this.googleLogin = this
+            .googleLogin
+            .bind(this);
+        this.logout = this
+            .logout
+            .bind(this);
+    }
+
+    componentDidMount() {
+        // without a relogin !!! 
+        auth.onAuthStateChanged((user) => {
+            if(user){
+                this.setState({user});
+            }
+        });
     }
 
     handleChange(e) {
         let nextState = {};
         nextState[e.target.name] = e.target.value;
         this.setState(nextState);
+        // this.setState({     [e.target.name]: e.target.value });
+    }
+
+    login() {}
+
+    logout() {
+
+        // Google Logout
+        auth
+            .signOut()
+            .then(() => {
+                this.setState({user: null});
+            });
+
+    }
+
+    googleLogin() {
+
+        // Google API
+        auth
+            .signInWithPopup(provider)
+            .then((result) => {
+                const user = result.user;
+                this.setState({user});
+            });
     }
 
     render() {
@@ -30,7 +81,12 @@ class Authentication extends React.Component {
         const commonInputBox = (
             <div className="input-field col s12 username">
                 <label>아이디</label>
-                <input name="username" type="text" className="validate" placeholder="아이디"/>
+                <input
+                    name="username"
+                    type="text"
+                    className="validate"
+                    placeholder="아이디"
+                    value={this.state.username}/>
             </div>
         )
 
@@ -47,13 +103,20 @@ class Authentication extends React.Component {
 
                         <div className="input-field col s12">
                             <label>비밀번호</label>
-                            <input name="password" type="password" className="validate" placeholder="비밀번호"/>
+                            <input
+                                name="password"
+                                type="password"
+                                className="validate"
+                                placeholder="비밀번호"
+                                value={this.state.password}/>
                         </div>
-                        <a className="waves-effect waves-light btn">로그인</a>
-                    </div>
-                </div>
-
-                <div className="footer">
+                        {
+                            this.state.user
+                                ? <button onClick={this.logout}>로그아웃</button>
+                                : <div><button onClick={this.googleLogin}>구글로 로그인</button>
+                                <button onClick={this.login}>찐아디,패스워드 로그인</button>
+                                
+                                <div className="footer">
                     <div className="card-content">
                         <div className="right">
                             아이디 없음?
@@ -61,6 +124,21 @@ class Authentication extends React.Component {
                         </div>
                     </div>
                 </div>
+
+                                </div>
+
+                        }
+                    </div>
+                </div>
+
+                {/* <div className="footer">
+                    <div className="card-content">
+                        <div className="right">
+                            아이디 없음?
+                            <Link to="/signup">회원가입하러가기</Link>
+                        </div>
+                    </div>
+                </div> */}
             </div>
         );
 
@@ -71,7 +149,7 @@ class Authentication extends React.Component {
                     <div className="row">
 
                         {/* 공통 <div /> */}
-                        { commonInputBox }
+                        {commonInputBox}
 
                         <div className="input-field col s12 username">
                             <label>아이디</label>
@@ -104,12 +182,12 @@ class Authentication extends React.Component {
                                 </Form.Group>
                             </Form.Row>
                         </div>
-                        
+
                         {/* 담딩투어 경험 Y/N */}
                         <Form.Group id="formGridCheckbox">
                             <Form.Check type="checkbox" label="담딩투어 경험이 있으시면 체크해주세요. "/>
                         </Form.Group>
-                        
+
                         <a className="waves-effect waves-light btn">회원가입</a>
                     </div>
                 </div>
@@ -118,12 +196,12 @@ class Authentication extends React.Component {
 
         return (
             <div className="container auth">
-                <Link className="logo" to="/">DAMDING</Link>
+                <Link className="logo" to="/main">DAMDING</Link>
                 <div className="card">
                     <div className="header blue wh∂ite-text center">
                         <div className="card-content">{
                                 this.props.mode
-                                    ? "로그인"
+                                    ? "로그아웃"
                                     : "회원가입"
                             }</div>
                     </div>
