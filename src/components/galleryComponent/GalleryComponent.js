@@ -55,19 +55,19 @@ class GalleryComponent extends Component {
                         <div class="panel panel-default">
                             <div class="panel-heading">
                                 <h3 class="panel-title">
-                                    BOARD LIST
+                                    게쉬판
                                 </h3>
                             </div>
                             <div class="panel-body">
                                 <h4>
-                                    <Link to="/gallery/create">Add Board</Link>
+                                    <Link to="/gallery/create">글쓰기</Link>
                                 </h4>
                                 <table class="table table-stripe">
                                     <thead>
                                         <tr>
-                                            <th>Title</th>
-                                            <th>Description</th>
-                                            <th>Author</th>
+                                            <th>제목</th>
+                                            <th>내용</th>
+                                            <th>글쓴이</th>
                                         </tr>
                                     </thead>
                                     <tbody>

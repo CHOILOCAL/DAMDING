@@ -53,20 +53,20 @@ class Show extends Component {
           <div class="container">
             <div class="panel panel-default">
               <div class="panel-heading">
-              <h4><Link to="/">Board List</Link></h4>
+              <h4><Link to="/">게씨판</Link></h4>
                 <h3 class="panel-title">
                   {this.state.board.title}
                 </h3>
               </div>
               <div class="panel-body">
                 <dl>
-                  <dt>Description:</dt>
+                  <dt>내용:</dt>
                   <dd>{this.state.board.description}</dd>
-                  <dt>Author:</dt>
+                  <dt>글쓴이:</dt>
                   <dd>{this.state.board.author}</dd>
                 </dl>
-                <Link to={`/edit/${this.state.key}`} class="btn btn-success">Edit</Link>&nbsp;
-                <button onClick={this.delete.bind(this, this.state.key)} class="btn btn-danger">Delete</button>
+                <Link to={`/edit/${this.state.key}`} class="btn btn-success">수정하기</Link>&nbsp;
+                <button onClick={this.delete.bind(this, this.state.key)} class="btn btn-danger">삭제하기</button>
               </div>
             </div>
           </div>

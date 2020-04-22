@@ -63,45 +63,45 @@ class Create extends Component {
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h3 class="panel-title">
-                            ADD BOARD
+                            게시판
                         </h3>
                     </div>
                     <div class="panel-body">
                         <h4>
-                            <Link to="/gallery/show" class="btn btn-primary">Book List</Link>
+                            <Link to="/gallery/show" class="btn btn-primary">리스트 바로가기</Link>
                         </h4>
                         <form onSubmit={this.onSubmit}>
                             <div class="form-group">
-                                <label for="title">Title:</label>
+                                <label for="title">제목:</label>
                                 <input
                                     type="text"
                                     class="form-control"
                                     name="title"
                                     value={title}
                                     onChange={this.onChange}
-                                    placeholder="Title"/>
+                                    placeholder="제목을 입력해주세요."/>
                             </div>
                             <div class="form-group">
-                                <label for="description">Description:</label>
+                                <label for="description">내용:</label>
                                 <textArea
                                     class="form-control"
                                     name="description"
                                     onChange={this.onChange}
-                                    placeholder="Description"
+                                    placeholder="내용을 입력해주세요."
                                     cols="80"
                                     rows="3">{description}</textArea>
                             </div>
                             <div class="form-group">
-                                <label for="author">Author:</label>
+                                <label for="author">글쓴이:</label>
                                 <input
                                     type="text"
                                     class="form-control"
                                     name="author"
                                     value={author}
                                     onChange={this.onChange}
-                                    placeholder="Author"/>
+                                    placeholder="최현지"/>
                             </div>
-                            <button type="submit" class="btn btn-success">Submit</button>
+                            <button type="submit" class="btn btn-success">등록</button>
                         </form>
                     </div>
                 </div>
