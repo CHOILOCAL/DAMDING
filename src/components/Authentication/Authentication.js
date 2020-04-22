@@ -7,7 +7,7 @@ import '../../css/Authentication.css';
 
 import {Form, Col} from 'react-bootstrap';
 
-import firebase, {auth, provider} from '../../Firebase';
+import {auth, provider} from '../../Firebase';
 
 class Authentication extends React.Component {
 
@@ -116,7 +116,7 @@ class Authentication extends React.Component {
                                         {/* googld profile photo */}
                                         <div className='user-profile'>
                                             <p className='user-profile-name'>{this.state.user.displayName} 님</p>
-                                            <img src={this.state.user.photoURL} className='user-profile-photoURL'/>
+                                            <img src={this.state.user.photoURL} alt="Not Found" className='user-profile-photoURL'/>
                                         </div>
 
                                     </div>
@@ -134,7 +134,6 @@ class Authentication extends React.Component {
                                         </div>
 
                                     </div>
-
                         }
                     </div>
                 </div>
