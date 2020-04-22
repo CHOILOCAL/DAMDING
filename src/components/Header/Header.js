@@ -59,7 +59,7 @@ class Header extends React.Component {
         const logoutButton = (
             <Link to="/main"><Button variant="outline-primary" onClick={this.logout} href="/main">로그아웃</Button></Link>
         );
-
+  
         return (
             <div className={Header}>
                 <Container fluid="fluid">

@@ -19,10 +19,8 @@ class Authentication extends React.Component {
             user: null // 처음 로그인시에는 로그인되어있지 않은 상태
         };
 
-        // functionName(e) => {} 함수를 쓰면 bind 안해줘도 됨 ㅇㅇ
-        // this.handleChange = this
-        //     .handleChange
-        //     .bind(this);
+        // functionName(e) => {} 함수를 쓰면 bind 안해줘도 됨 ㅇㅇ this.handleChange = this
+        // .handleChange     .bind(this);
 
         this.login = this
             .login
@@ -36,9 +34,9 @@ class Authentication extends React.Component {
     }
 
     componentDidMount() {
-        // without a relogin !!! 
+        // without a relogin !!!
         auth.onAuthStateChanged((user) => {
-            if(user){
+            if (user) {
                 this.setState({user});
             }
         });
@@ -112,20 +110,30 @@ class Authentication extends React.Component {
                         </div>
                         {
                             this.state.user
-                                ? <button onClick={this.logout}>로그아웃</button>
-                                : <div><button onClick={this.googleLogin}>구글로 로그인</button>
-                                <button onClick={this.login}>찐아디,패스워드 로그인</button>
-                                
-                                <div className="footer">
-                    <div className="card-content">
-                        <div className="right">
-                            아이디 없음?
-                            <Link to="/signup">회원가입하러가기</Link>
-                        </div>
-                    </div>
-                </div>
+                                ? <div>
+                                        <button onClick={this.logout}>로그아웃</button>
 
-                                </div>
+                                        {/* googld profile photo */}
+                                        <div className='user-profile'>
+                                            <p className='user-profile-name'>{this.state.user.displayName} 님</p>
+                                            <img src={this.state.user.photoURL} className='user-profile-photoURL'/>
+                                        </div>
+
+                                    </div>
+                                : <div>
+                                        <button onClick={this.googleLogin}>구글로 로그인</button>
+                                        <button onClick={this.login}>찐아디,패스워드 로그인</button>
+
+                                        <div className="footer">
+                                            <div className="card-content">
+                                                <div className="right">
+                                                    아이디 없음?
+                                                    <Link to="/signup">회원가입하러가기</Link>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
 
                         }
                     </div>
@@ -138,7 +146,8 @@ class Authentication extends React.Component {
                             <Link to="/signup">회원가입하러가기</Link>
                         </div>
                     </div>
-                </div> */}
+                </div> */
+                }
             </div>
         );
 
