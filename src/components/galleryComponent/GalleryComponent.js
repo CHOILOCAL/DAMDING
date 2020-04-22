@@ -60,7 +60,7 @@ class GalleryComponent extends Component {
                             </div>
                             <div class="panel-body">
                                 <h4>
-                                    <Link to="/gallery/create">글쓰기</Link>
+                                    <Link to="/create">글쓰기</Link>
                                 </h4>
                                 <table class="table table-stripe">
                                     <thead>
@@ -78,7 +78,7 @@ class GalleryComponent extends Component {
                                                 .map(
                                                     board => <tr>
                                                         <td>
-                                                            <Link to={`/gallery/show/${board.key}`}>{board.title}</Link>
+                                                            <Link to={`/show/${board.key}`}>{board.title}</Link>
                                                         </td>
                                                         <td>{board.description}</td>
                                                         <td>{board.author}</td>

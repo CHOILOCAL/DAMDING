@@ -43,7 +43,7 @@ class Create extends Component {
                 description: '',
                 author: ''
             });
-            this.props.history.push("/")
+            this.props.history.push("/gallery")
         })
         .catch((error) => {
             console.log("Error adding document : ", error);

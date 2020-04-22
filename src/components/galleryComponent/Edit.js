@@ -74,12 +74,12 @@ class Edit extends Component {
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h3 class="panel-title">
-                            EDIT BOARD
+                            수정하기
                         </h3>
                     </div>
                     <div class="panel-body">
                         <h4>
-                            <Link to={`/show/${this.state.key}`} class="btn btn-primary">Board List</Link>
+                            <Link to={`/show/${this.state.key}`} class="btn btn-primary">리스트 바로가기</Link>
                         </h4>
                         <form onSubmit={this.onSubmit}>
                             <div class="form-group">
@@ -93,7 +93,7 @@ class Edit extends Component {
                                     placeholder="Title"/>
                             </div>
                             <div class="form-group">
-                                <label for="description">Description:</label>
+                                <label for="description">내용:</label>
                                 <input
                                     type="text"
                                     class="form-control"
@@ -112,7 +112,7 @@ class Edit extends Component {
                                     onChange={this.onChange}
                                     placeholder="Author"/>
                             </div>
-                            <button type="submit" class="btn btn-success">Submit</button>
+                            <button type="submit" class="btn btn-success">수정하기</button>
                         </form>
                     </div>
                 </div>

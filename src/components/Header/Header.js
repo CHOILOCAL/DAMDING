@@ -34,12 +34,12 @@ class Header extends React.Component {
 
         // 로그인 전
         const loginButton = (
-            <Link to="/login"><Button variant="outline-primary" onClick={this.activeLogin} href="/">로그인</Button></Link>
+            <Link to="/login"><Button variant="outline-primary" onClick={this.activeLogin} href="/main">로그인</Button></Link>
         );
 
         // 로그인 후
         const logoutButton = (
-            <Link to="/"><Button variant="outline-primary" onClick={this.activeLogout} href="/">로그아웃</Button></Link>
+            <Link to="/"><Button variant="outline-primary" onClick={this.activeLogout} href="/main">로그아웃</Button></Link>
         );
 
         return (
@@ -61,7 +61,7 @@ class Header extends React.Component {
                         {/* Menu */}
                         <div>
                             <Nav className="mr-auto">
-                                <Nav.Link href="/">메인</Nav.Link>
+                                <Nav.Link href="/main">메인</Nav.Link>
                                 <Nav.Link href='/about'>About 담딩투어</Nav.Link>
                                 <Nav.Link href="/exp">투어설명서</Nav.Link>
                                 <Nav.Link href="/product">투어상품</Nav.Link>
