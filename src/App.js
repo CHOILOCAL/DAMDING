@@ -17,6 +17,10 @@ import ProductComponent from "./components/productComponent/ProductComponent";
 import QnaContainer from "./container/QnaContainer";
 import WithMeComponent from "./components/withMeComponent/WithMeComponent";
 
+import Show from "./components/galleryComponent/Show";
+import Create from "./components/galleryComponent/Create";
+import Edit from "./components/galleryComponent/Edit";
+
 import './animation/Animation.css';
 import './animation/Warning.css';
 
@@ -39,6 +43,11 @@ class App extends Component {
                 <Route path="/qna" component={QnaContainer}/>
                 <Route path="/gallery" component={GalleryComponent}/>
                 <Route path="/box" component={BoxComponent}/>
+
+                {/* boards routing */}
+                <Route path='/gallery/edit/:id' component={Edit}/>
+                <Route path='/gallery/create' component={Create}/>
+                <Route path='/gallery/show/:id' component={Show}/>
             </main>
         );
     }
