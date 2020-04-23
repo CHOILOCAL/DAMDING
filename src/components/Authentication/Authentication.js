@@ -43,9 +43,10 @@ class Authentication extends React.Component {
         auth
             .signOut()
             .then(() => {
-                this.setState({user: null});
+                this.setState({
+                    user: null
+                });
             });
-
     }
 
     googleLogin = (e) => {
@@ -217,6 +218,7 @@ class Authentication extends React.Component {
                                 ? loginView
                                 : signupView
                         }
+                        
                     </div>
                 </div>
             </div>

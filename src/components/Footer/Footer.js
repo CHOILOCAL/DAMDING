@@ -17,7 +17,7 @@ class Footer extends React.Component {
                     <Navbar className="css-footer" variant="dark" fixed='bottom'>
                         <Nav>
                             <img src={kakao} alt="kakaoImage.png" style={{ width: "30px", height: "30px", marginTop: "3px"}}></img>
-                            <Nav.Link href="#">카카오톡 문의 바로가기</Nav.Link>
+                            <Nav.Link href="http://pf.kakao.com/_GxfQaxb">카카오톡 문의 바로가기</Nav.Link>
                         </Nav>
                     </Navbar>
                 </div>

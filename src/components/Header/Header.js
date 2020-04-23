@@ -16,10 +16,12 @@ import '../../css/Header.css';
 
 class Header extends React.Component {
 
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             // user: null  처음 로그인시에는 로그인되어있지 않은 상태
+            user: null,
+            mode: ''
         };
         // this.login = this.login.bind(this); this.logout = this.logout.bind(this);
     }
@@ -50,6 +52,8 @@ class Header extends React.Component {
                 <Button variant="light" onClick={this.logout} className="logoutButton">로그아웃</Button>
             </Link>
         );
+
+        
 
         return (
 
@@ -97,7 +101,7 @@ class Header extends React.Component {
                             {/* 로그인 상태 체크 후 로그인/로그아웃 변경 */}
                             <div className="css-header-logButton">
                                 {
-                                    this.props.isLoggedIn
+                                    this.props.mode
                                         ? logoutButton
                                         : loginButton
                                 }</div>
