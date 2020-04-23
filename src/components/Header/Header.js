@@ -75,13 +75,13 @@ class Header extends React.Component {
                                 <Nav.Link className="css-header-letters" href="/main">메인</Nav.Link>
                             </Nav.Item>
                             <Nav.Item>
-                                <Nav.Link className="css-header-letters" href="/about" disabled="">담딩투어(준비중)</Nav.Link>
+                                <Nav.Link className="css-header-letters" href="/about" disabled="disabled">담딩투어(준비중)</Nav.Link>
                             </Nav.Item>
                             <Nav.Item>
-                                <Nav.Link className="css-header-letters" href="/exp" disabled="">투어설명서(준비중)</Nav.Link>
+                                <Nav.Link className="css-header-letters" href="/exp" disabled="disabled">투어설명서(준비중)</Nav.Link>
                             </Nav.Item>
                             <Nav.Item>
-                                <Nav.Link className="css-header-letters" href="/product" disabled="">투어상품(준비중)</Nav.Link>
+                                <Nav.Link className="css-header-letters" href="/product" disabled="disabled">투어상품(준비중)</Nav.Link>
                             </Nav.Item>
                             <Nav.Item>
                                 <Nav.Link className="css-header-letters" eventKey="gallery" href="/gallery">투어문의</Nav.Link>
@@ -90,7 +90,7 @@ class Header extends React.Component {
                                 <Nav.Link className="css-header-letters" eventKey="qna" href="/qna">갤러리</Nav.Link>
                             </Nav.Item>
                             <Nav.Item>
-                                <Nav.Link className="css-header-letters" eventKey="withme" disabled="">
+                                <Nav.Link className="css-header-letters" eventKey="withme" disabled="disabled">
                                     동행구하기(준비중)
                                 </Nav.Link>
                             </Nav.Item>
