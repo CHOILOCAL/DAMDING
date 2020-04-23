@@ -3,16 +3,20 @@ import React from "react";
 import Navbar from 'react-bootstrap/Navbar'
 import {Container, Nav} from "react-bootstrap";
 
+import '../../css/Footer.css'
+
+import kakao from '../../image/kakaoImage.png';
+
 class Footer extends React.Component {
 
     render() {
         return (
-            <div className={Footer}>
+            <div className="">
             <Container fluid>
-                <div className={Footer}>
-                    <Navbar bg="dark" variant="dark" fixed='bottom'>
+                <div className="">
+                    <Navbar className="css-footer" variant="dark" fixed='bottom'>
                         <Nav>
-                            <span><img src="http://placehold.it/30x30" alt="" style={{marginTop: 5, marginRight: 5}}></img></span>
+                            <img src={kakao} alt="kakaoImage.png" style={{ width: "30px", height: "30px", marginTop: "3px"}}></img>
                             <Nav.Link href="#">카카오톡 문의 바로가기</Nav.Link>
                         </Nav>
                     </Navbar>
