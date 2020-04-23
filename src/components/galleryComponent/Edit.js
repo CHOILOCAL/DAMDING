@@ -4,6 +4,9 @@ import {Link} from 'react-router-dom';
 
 import '../../css/boards.css';
 
+import Header from '../Header/Header';
+import Footer from '../Footer/Footer';
+
 class Edit extends Component {
 
     constructor(props) {
@@ -66,6 +69,9 @@ class Edit extends Component {
 
     render() {
         return (
+            <div>
+
+                <Header />
 
             <div className="boardsFrame">
 
@@ -79,7 +85,7 @@ class Edit extends Component {
                     </div>
                     <div class="panel-body">
                         <h4>
-                            <Link to={`/show/${this.state.key}`} class="btn btn-primary">리스트 바로가기</Link>
+                            <Link to={`/show/${this.state.key}`} class="">다쉬 리스트!!</Link>
                         </h4>
                         <form onSubmit={this.onSubmit}>
                             <div class="form-group">
@@ -112,12 +118,15 @@ class Edit extends Component {
                                     onChange={this.onChange}
                                     placeholder="Author"/>
                             </div>
-                            <button type="submit" class="btn btn-success">수정하기</button>
+                            <button type="submit" class="">수정하기</button>
                         </form>
                     </div>
                 </div>
             </div>
 
+            </div>
+
+            <Footer />
             </div>
         );
     }

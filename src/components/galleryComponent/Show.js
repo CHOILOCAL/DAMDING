@@ -4,6 +4,9 @@ import {Link} from 'react-router-dom';
 
 import '../../css/boards.css';
 
+import Header from '../Header/Header';
+import Footer from '../Footer/Footer';
+
 class Show extends Component {
 
     constructor(props) {
@@ -50,8 +53,10 @@ class Show extends Component {
 
     render() {
         return (
+<div>
 
-
+<Header />
+  
           <div class="container">
             <div class="panel panel-default">
               <div class="panel-heading">
@@ -67,13 +72,15 @@ class Show extends Component {
                   <dt>글쓴이:</dt>
                   <dd>{this.state.board.author}</dd>
                 </dl>
-                <Link to={`/edit/${this.state.key}`} class="btn btn-success">수정하기</Link>&nbsp;
-                <button onClick={this.delete.bind(this, this.state.key)} class="btn btn-danger">삭제하기</button>
+                <Link to={`/edit/${this.state.key}`} class="">수정하기</Link>&nbsp;
+                <button onClick={this.delete.bind(this, this.state.key)} class="">삭제하기</button>
               </div>
             </div>
           </div>
 
-          
+      <Footer />
+
+</div>
         );
       }
     }

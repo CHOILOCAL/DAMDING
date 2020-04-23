@@ -4,6 +4,8 @@ import '../../css/QnaPost.css';
 import CommentList from '../qnaComponent/CommentList';
 // import Comment from '../qnaComponent/Comment';
 
+import Header from '../Header/Header';
+
 // 전달받는 props = title, body, comments
 class QnaPost extends Component {
 
@@ -65,13 +67,18 @@ class QnaPost extends Component {
         if(title===null) return null;
 
         return (
+
+            // <Header />
+
             <div className={`Post animated ${animation}`}>
+
                 <h1>{title}</h1>
                 <p>
                     {body}
                 </p>
                 <CommentList comments={comments}/>
             </div>
+            
         );
     }
 }

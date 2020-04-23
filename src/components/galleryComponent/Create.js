@@ -4,6 +4,9 @@ import {Link} from 'react-router-dom';
 
 import '../../css/boards.css';
 
+import Header from '../Header/Header';
+import Footer from '../Footer/Footer';
+
 class Create extends Component {
 
     constructor() {
@@ -55,6 +58,9 @@ class Create extends Component {
         const {title, description, author} = this.state;
 
         return (
+            <div>
+                <Header />
+
 
             <div className="boardsFrame">
 
@@ -107,7 +113,9 @@ class Create extends Component {
                 </div>
             </div>
 
+            </div>
 
+<Footer />
             </div>
         );
     }
