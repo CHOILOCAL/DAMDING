@@ -5,7 +5,7 @@ import {Link} from 'react-router-dom';
 
 import '../../css/Authentication.css';
 
-import {Form, Col, Button} from 'react-bootstrap';
+import {Form, Col} from 'react-bootstrap';
 
 import {auth, provider} from '../../Firebase';
 
@@ -78,73 +78,82 @@ class Authentication extends React.Component {
             </div>
         )
 
-        // 로그인 뷰 <input name="username" type="text" className="validate"/> <input
-        // name="password" type="password" className="validate"/> <a>로그인</a> <Link
-        // to="/register">회원가입</Link>
+        // 로그인 뷰
         const loginView = (
-            // <div className="card-content">
             <div className="view-row">
-
-                {/* 공통 <div /> */}
-                {commonInputBox}
-
-                <div className="basicinfo-input-pw">
-                    <label>비밀번호</label>
-                    <input
-                        name="password"
-                        type="password"
-                        className="validate"
-                        placeholder="비밀번호"
-                        value={this.state.password}/>
-                </div>
-
-                {/* user = true (로그아웃 해야하는 경우)*/}
                 {
                     this.state.user
-                        ? 
-                        // user = true (로그아웃 해야하는 경우)
-                        
+                        ?
+                        // 로그인 되어있을 경우 
+                        <div>
+                                <div className="logout-button">
+                                    <button onClick={this.logout}>로그아웃</button>
 
-                        
+                                    {/* googld profile photo */}
+                                    <div className='user-profile'>
+                                        <p className='user-profile-name'>{this.state.user.displayName}
+                                            님</p>
+                                        <img
+                                            src={this.state.user.photoURL}
+                                            alt="Not Found"
+                                            className='user-profile-photoURL'/>
+                                    </div>
 
-
-
-                        <div className="logout-button">
-                                <button onClick={this.logout}>로그아웃</button>
-
-                                {/* googld profile photo */}
-                                <div className='user-profile'>
-                                    <p className='user-profile-name'>{this.state.user.displayName}
-                                        님</p>
-                                    <img
-                                        src={this.state.user.photoURL}
-                                        alt="Not Found"
-                                        className='user-profile-photoURL'/>
                                 </div>
 
-                            </div>
+                        </div>
+
                         :
-                        // user = false (로그인 해야하는 경우)
 
+                        // 로그인 되어있을 경우 
+                        <div>
+                                {/* 아이디 */}
+                                <div className="basicinfo-input-id">
+                                    <label>아이디</label>
+                                    <input
+                                        name="username"
+                                        type="text"
+                                        className="validate"
+                                        placeholder="아이디"
+                                        value={this.state.username}/>
+                                </div>
 
+                                {/* 비밀번호 */}
+                                <div className="basicinfo-input-pw">
+                                    <label>비밀번호</label>
+                                    <input
+                                        name="password"
+                                        type="password"
+                                        className="validate"
+                                        placeholder="비밀번호"
+                                        value={this.state.password}/>
+                                </div>
 
+                                {/* 로그인 버튼 */}
+                                <div className="login-button">
+                                    <div className="kakao-loginbutton">
+                                        <button onClick={this.kakoLogin}>카카오로 로그인</button>
+                                    </div>
+                                    <div className="google-loginbutton">
+                                        <button onClick={this.googleLogin}>구글로 로그인</button>
+                                    </div>
+                                    <div className="damding-loginbutton">
+                                        <button variant="" className="damding-loginbutton-t" onClick={this.login}>찐아디,패스워드 로그인</button>
+                                    </div>
 
-
-
-                        
-
-                        <div className="login-button">
-                            <div className="kakao-loginbutton"><button onClick={this.kakoLogin}>카카오로 로그인</button></div>
-                            <div className="google-loginbutton"><button onClick={this.googleLogin}>구글로 로그인</button></div>
-                             <div className="damding-loginbutton"><button variant="" className="damding-loginbutton-t" onClick={this.login}>찐아디,패스워드 로그인</button></div>
-                            <div className="damding-signupbutton">아이디 없음? <Link to="/signup">회원가입하러가기</Link></div>
+                                    {/* 회원가입 안내 */}
+                                    <div className="damding-signupbutton">아이디 없음?
+                                        <Link to="/signup">회원가입하러가기</Link>
+                                    </div>
+                                </div>
+                                {/* div 끝 */}
                         </div>
                 }
             </div>
-        );
+        )
 
         // 회원가입 뷰
-        const registerView = (
+        const signupView = (
             // <div className="card-content">
             <div className="view-row">
 
@@ -201,12 +210,12 @@ class Authentication extends React.Component {
                     <div className="card-subject">{
                             this.props.mode
                                 ? "로그인"
-                                : "회원가입"
+                                : "로그아웃"
                         }
                         {
                             this.props.mode
                                 ? loginView
-                                : registerView
+                                : signupView
                         }
                     </div>
                 </div>

@@ -1,8 +1,7 @@
 import React from "react";
 
 // react-bootstrap
-import {Nav, Form, Button, Container, Image} from 'react-bootstrap';
-import Navbar from 'react-bootstrap/Navbar';
+import {Nav, Button} from 'react-bootstrap';
 
 import {Link} from 'react-router-dom';
 
@@ -70,7 +69,7 @@ class Header extends React.Component {
                         {/*  <Link to="/main"><Navbar.Brand href="/main">D A M D I N G</Navbar.Brand></Link> */}
 
                         {/* Menu */}
-                        <Nav className="justify-content-center" activeKey="/">
+                        <Nav className="justify-content-center" activeKey="/" fixed='top'>
                             <Nav.Item>
                                 <Nav.Link className="css-header-letters" href="/main">메인</Nav.Link>
                             </Nav.Item>
