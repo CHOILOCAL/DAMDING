@@ -5,7 +5,7 @@ import {Link} from 'react-router-dom';
 
 import '../../css/Authentication.css';
 
-import {Form, Col} from 'react-bootstrap';
+import {Form, Col, Button} from 'react-bootstrap';
 
 import {auth, provider} from '../../Firebase';
 
@@ -18,19 +18,6 @@ class Authentication extends React.Component {
             password: '',
             user: null // 처음 로그인시에는 로그인되어있지 않은 상태
         };
-
-        // functionName(e) => {} 함수를 쓰면 bind 안해줘도 됨 ㅇㅇ this.handleChange = this
-        // .handleChange     .bind(this);
-
-        this.login = this
-            .login
-            .bind(this);
-        this.googleLogin = this
-            .googleLogin
-            .bind(this);
-        this.logout = this
-            .logout
-            .bind(this);
     }
 
     componentDidMount() {
@@ -49,10 +36,9 @@ class Authentication extends React.Component {
         // this.setState({     [e.target.name]: e.target.value });
     }
 
-    login() {}
+    login(e) {}
 
-    logout() {
-
+    logout(e) {
         // Google Logout
         auth
             .signOut()
@@ -62,7 +48,7 @@ class Authentication extends React.Component {
 
     }
 
-    googleLogin() {
+    googleLogin = (e) => {
 
         // Google API
         auth
@@ -73,11 +59,15 @@ class Authentication extends React.Component {
             });
     }
 
+    kakoLogin = (e) => {
+        // kakaoTalk API
+    }
+
     render() {
 
         // 회원가입, 로그인 뷰에서 보이는 중복 코드
         const commonInputBox = (
-            <div className="input-field col s12 username">
+            <div className="basicinfo-input-id">
                 <label>아이디</label>
                 <input
                     name="username"
@@ -92,134 +82,136 @@ class Authentication extends React.Component {
         // name="password" type="password" className="validate"/> <a>로그인</a> <Link
         // to="/register">회원가입</Link>
         const loginView = (
-            <div>
-                <div className="card-content">
-                    <div className="row">
+            // <div className="card-content">
+            <div className="view-row">
 
-                        {/* 공통 <div /> */}
-                        {commonInputBox}
+                {/* 공통 <div /> */}
+                {commonInputBox}
 
-                        <div className="input-field col s12">
-                            <label>비밀번호</label>
-                            <input
-                                name="password"
-                                type="password"
-                                className="validate"
-                                placeholder="비밀번호"
-                                value={this.state.password}/>
-                        </div>
-                        {
-                            this.state.user
-                                ? <div>
-                                        <button onClick={this.logout}>로그아웃</button>
-
-                                        {/* googld profile photo */}
-                                        <div className='user-profile'>
-                                            <p className='user-profile-name'>{this.state.user.displayName} 님</p>
-                                            <img src={this.state.user.photoURL} alt="Not Found" className='user-profile-photoURL'/>
-                                        </div>
-
-                                    </div>
-                                : <div>
-                                        <button onClick={this.googleLogin}>구글로 로그인</button>
-                                        <button onClick={this.login}>찐아디,패스워드 로그인</button>
-
-                                        <div className="footer">
-                                            <div className="card-content">
-                                                <div className="right">
-                                                    아이디 없음?
-                                                    <Link to="/signup">회원가입하러가기</Link>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                    </div>
-                        }
-                    </div>
+                <div className="basicinfo-input-pw">
+                    <label>비밀번호</label>
+                    <input
+                        name="password"
+                        type="password"
+                        className="validate"
+                        placeholder="비밀번호"
+                        value={this.state.password}/>
                 </div>
 
-                {/* <div className="footer">
-                    <div className="card-content">
-                        <div className="right">
-                            아이디 없음?
-                            <Link to="/signup">회원가입하러가기</Link>
+                {/* user = true (로그아웃 해야하는 경우)*/}
+                {
+                    this.state.user
+                        ? 
+                        // user = true (로그아웃 해야하는 경우)
+                        
+
+                        
+
+
+
+                        <div className="logout-button">
+                                <button onClick={this.logout}>로그아웃</button>
+
+                                {/* googld profile photo */}
+                                <div className='user-profile'>
+                                    <p className='user-profile-name'>{this.state.user.displayName}
+                                        님</p>
+                                    <img
+                                        src={this.state.user.photoURL}
+                                        alt="Not Found"
+                                        className='user-profile-photoURL'/>
+                                </div>
+
+                            </div>
+                        :
+                        // user = false (로그인 해야하는 경우)
+
+
+
+
+
+
+                        
+
+                        <div className="login-button">
+                            <div className="kakao-loginbutton"><button onClick={this.kakoLogin}>카카오로 로그인</button></div>
+                            <div className="google-loginbutton"><button onClick={this.googleLogin}>구글로 로그인</button></div>
+                             <div className="damding-loginbutton"><button variant="" className="damding-loginbutton-t" onClick={this.login}>찐아디,패스워드 로그인</button></div>
+                            <div className="damding-signupbutton">아이디 없음? <Link to="/signup">회원가입하러가기</Link></div>
                         </div>
-                    </div>
-                </div> */
                 }
             </div>
         );
 
         // 회원가입 뷰
         const registerView = (
-            <div>
-                <div className="card-content">
-                    <div className="row">
+            // <div className="card-content">
+            <div className="view-row">
 
-                        {/* 공통 <div /> */}
-                        {commonInputBox}
+                {/* 공통 <div /> */}
+                {commonInputBox}
 
-                        <div className="input-field col s12 username">
-                            <label>아이디</label>
-                            <input name="username" type="text" className="validate" placeholder="아이디 입력해"/>
-                        </div>
-                        <div className="input-field col s12">
-                            <label>비밀번호</label>
-                            <input name="password" type="text" className="validate" placeholder="패스워드 입력해"/>
-                        </div>
-                        <div className="input-field col s12">
-                            <label>비밀번호확인</label>
-                            <input
-                                name="passwordCheck"
-                                type="text"
-                                className="validate"
-                                placeholder="패스워드 또 입력해"/>
-                        </div>
-                        <div className="input-field col s12">
-                            <label>주소</label>
-                            <input name="address" type="text" className="validate" placeholder="주소주소"/>
-                        </div>
-                        <div className="input-field col s12">
-                            <Form.Row>
-                                <Form.Group as={Col} controlId="formGridState">
-                                    <Form.Label>국가</Form.Label>
-                                    <Form.Control as="select" value="Choose...">
-                                        <option>-</option>
-                                        <option>대한민국</option>
-                                    </Form.Control>
-                                </Form.Group>
-                            </Form.Row>
-                        </div>
-
-                        {/* 담딩투어 경험 Y/N */}
-                        <Form.Group id="formGridCheckbox">
-                            <Form.Check type="checkbox" label="담딩투어 경험이 있으시면 체크해주세요. "/>
-                        </Form.Group>
-
-                        <a className="waves-effect waves-light btn">회원가입</a>
-                    </div>
+                <div className="input-field col s12 username">
+                    <label>아이디</label>
+                    <input name="username" type="text" className="validate" placeholder="아이디 입력해"/>
                 </div>
+                <div className="input-field col s12">
+                    <label>비밀번호</label>
+                    <input name="password" type="text" className="validate" placeholder="패스워드 입력해"/>
+                </div>
+                <div className="input-field col s12">
+                    <label>비밀번호확인</label>
+                    <input
+                        name="passwordCheck"
+                        type="text"
+                        className="validate"
+                        placeholder="패스워드 또 입력해"/>
+                </div>
+                <div className="input-field col s12">
+                    <label>주소</label>
+                    <input name="address" type="text" className="validate" placeholder="주소주소"/>
+                </div>
+                <div className="input-field col s12">
+                    <Form.Row>
+                        <Form.Group as={Col} controlId="formGridState">
+                            <Form.Label>국가</Form.Label>
+                            <Form.Control as="select" value="Choose...">
+                                <option>-</option>
+                                <option>대한민국</option>
+                            </Form.Control>
+                        </Form.Group>
+                    </Form.Row>
+                </div>
+
+                {/* 담딩투어 경험 Y/N */}
+                <Form.Group id="formGridCheckbox">
+                    <Form.Check type="checkbox" label="담딩투어 경험이 있으시면 체크해주세요. "/>
+                </Form.Group>
+
+                <a className="waves-effect waves-light btn">회원가입</a>
             </div>
+            // </div>
         );
 
         return (
             <div className="container auth">
                 <Link className="logo" to="/main">DAMDING</Link>
                 <div className="card">
-                    <div className="header blue wh∂ite-text center">
-                        <div className="card-content">{
-                                this.props.mode
-                                    ? "로그아웃"
-                                    : "회원가입"
-                            }</div>
+                    {/* <div className="header blue white-text center"> */}
+                    <div className="card-subject">{
+                            this.props.mode
+                                ? "로그인"
+                                : "회원가입"
+                        }
+                        {
+                            this.props.mode
+                                ? loginView
+                                : registerView
+                        }
                     </div>
-                    {
-                        this.props.mode
-                            ? loginView
-                            : registerView
-                    }
                 </div>
             </div>
+            // </div>
         );
     }
 }

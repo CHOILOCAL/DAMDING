@@ -24,6 +24,7 @@ class Login extends Component {
 
                 {/* <button href="/signup/123">회원가입</button> */}
                 <Authentication mode={true} />
+                
                 <Footer/>
             </div>
         )

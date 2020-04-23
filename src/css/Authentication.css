@@ -41,8 +41,6 @@
     }
   }
   
-  
-  
   .auth .header {
       font-size: 18px;
   }
@@ -81,4 +79,53 @@
     width: 15%;
     height: 15%;
 
+  }
+
+  /* card */
+  .container auth {
+
+  }
+
+  .card {
+    width: 100px;
+    height: 300px;
+    background-color: white;
+
+  }
+
+  .card-subject {
+    width: 400px;
+    height: 50px;
+  }
+  
+  .row {
+    width: 100px;
+    height: 300px;
+  }
+
+  /* id, pw inputbox */
+  .basicinfo-input-id, .basicinfo-input-pw {
+    margin-top: 3%;
+    padding-top: 1%;
+  
+    }
+
+  .logout-button, .login-button {
+    margin-top: 30px;
+  }
+
+  .google-loginbutton {
+    margin-top: 3px;
+  }
+
+  .damding-loginbutton {
+    margin-top: 3px;
+  }
+
+  .damding-loginbutton-t {
+    background-color: rosybrown;
+  }
+
+  .damding-signupbutton {
+    margin-top: 10px;
   }
