@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 
-class WithMeComponent extends Component {
+class withmeTogether extends Component {
 
     render() {
         return(
@@ -17,4 +17,4 @@ class WithMeComponent extends Component {
     }
 }
 
-export default WithMeComponent;
+export default withmeTogether;

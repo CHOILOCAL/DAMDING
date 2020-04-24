@@ -4,7 +4,7 @@ import '../css/Anime.css';
 
 import {Link} from 'react-router-dom';
 
-class Anime extends Component {
+class AnimeContainer extends Component {
 
     handleAnimatipon = () => {
         var ml4 = {};
@@ -93,4 +93,4 @@ class Anime extends Component {
     }
 }
 
-export default Anime;
+export default AnimeContainer;

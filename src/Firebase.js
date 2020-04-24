@@ -1,5 +1,6 @@
 import * as firebase from 'firebase';
 
+// 파이어베이스 설정
 const settings = {
     timestampsInSnapshots: true
 };
@@ -16,9 +17,10 @@ const config = {
 };
 firebase.initializeApp(config);
 
-firebase
-    .firestore()
-    .settings(settings);
+firebase.firestore().settings(settings);
+
+// image upload
+firebase.analytics();
 
 // google login api
 export const provider = new firebase.auth.GoogleAuthProvider();

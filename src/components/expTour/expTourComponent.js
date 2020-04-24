@@ -1,13 +1,13 @@
 /*global kakao*/ 
 import React, { Component } from 'react';
-import Header from "../Header/Header";
-import Footer from "../Footer/Footer";
+import Header from "../Common/Header/Header";
+import Footer from "../Common/Footer/Footer";
 
 import '../../css/Exp.css';
 
 import styled from "styled-components";
 
-class ExpComponent extends Component {
+class expTourComponent extends Component {
 
 
     // 맵박스 불러오기 (javascript)
@@ -43,7 +43,7 @@ class ExpComponent extends Component {
                 <Footer />
             </div>
         )
-    }
+    } 
 }
 
 // 지도 담기
@@ -52,5 +52,5 @@ const MapContents = styled.div`
   height: 100%;
 `;
 
-export default ExpComponent;
+export default expTourComponent;
 

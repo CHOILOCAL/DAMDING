@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
-import Header from "../components/Header/Header";
-import Footer from "../components/Footer/Footer";
+import Header from "../components/Common/Header/Header";
+import Footer from "../components/Common/Footer/Footer";
 
-import Authentication from '../components/Authentication/Authentication';
-class Signup extends Component {
+import Authentication from '../components/Auth/Authentication';
+class SignupContainer extends Component {
 
     activeSignup = (e) => {
         console.log("signup");
@@ -22,4 +22,4 @@ class Signup extends Component {
     }
 }
 
-export default Signup;
+export default SignupContainer;

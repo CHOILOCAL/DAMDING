@@ -1,10 +1,9 @@
 import React, {Component} from 'react';
 import '../../css/QnaPost.css';
 
-import CommentList from '../qnaComponent/CommentList';
-// import Comment from '../qnaComponent/Comment';
+import CommentList from '../storyUnMe/CommentList';
 
-import Header from '../Header/Header';
+// import Header from '../Common/Header/Header';
 
 // 전달받는 props = title, body, comments
 class QnaPost extends Component {

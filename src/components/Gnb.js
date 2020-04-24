@@ -9,7 +9,7 @@ const Gnb = () => (
     <div className={Gnb}>
         <div style={{ width: 'auto', height: 'auto' }}>
             <ResponsiveEmbed aspectRatio="16by9">
-                <embed type="" src={{}} />
+                <embed type="" src={{}}/>
             </ResponsiveEmbed>
 
             {/* <video controls autoplay loop>

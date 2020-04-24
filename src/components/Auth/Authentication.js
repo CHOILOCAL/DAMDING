@@ -9,6 +9,8 @@ import {Form, Col} from 'react-bootstrap';
 
 import {auth, provider} from '../../Firebase';
 
+import Header from '../../components/Common/Header/Header';
+
 class Authentication extends React.Component {
 
     constructor(props) {
@@ -36,7 +38,9 @@ class Authentication extends React.Component {
         // this.setState({     [e.target.name]: e.target.value });
     }
 
-    login(e) {}
+    login(e) {
+        
+    }
 
     logout(e) {
         // Google Logout
@@ -58,6 +62,8 @@ class Authentication extends React.Component {
                 const user = result.user;
                 this.setState({user});
             });
+
+            console.log("auth ::: ", auth);
     }
 
     kakoLogin = (e) => {
@@ -106,7 +112,7 @@ class Authentication extends React.Component {
 
                         :
 
-                        // 로그인 되어있을 경우 
+                        // 로그인 되어있지않은 경우 
                         <div>
                                 {/* 아이디 */}
                                 <div className="basicinfo-input-id">
@@ -210,15 +216,14 @@ class Authentication extends React.Component {
                     {/* <div className="header blue white-text center"> */}
                     <div className="card-subject">{
                             this.props.mode
-                                ? "로그인"
-                                : "로그아웃"
+                                ? "로그인해주세요"
+                                : "환영합니다"
                         }
                         {
                             this.props.mode
                                 ? loginView
                                 : signupView
                         }
-                        
                     </div>
                 </div>
             </div>

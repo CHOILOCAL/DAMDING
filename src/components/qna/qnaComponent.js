@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import Header from "../Header/Header";
-import Footer from "../Footer/Footer";
+import Header from "../Common/Header/Header";
+import Footer from "../Common/Footer/Footer";
 
 import firebase from '../../Firebase';
 // import {Query} from 'mongoose';
@@ -9,7 +9,7 @@ import {Link} from 'react-router-dom';
 
 import '../../css/boards.css';
 
-class GalleryComponent extends Component {
+class qnaComponent extends Component {
 
     constructor(props) {
         super(props);
@@ -100,4 +100,4 @@ class GalleryComponent extends Component {
     }
 }
 
-export default GalleryComponent;
+export default qnaComponent;

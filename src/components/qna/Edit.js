@@ -4,15 +4,15 @@ import {Link} from 'react-router-dom';
 
 import '../../css/boards.css';
 
-import Header from '../Header/Header';
-import Footer from '../Footer/Footer';
+import Header from '../Common/Header/Header';
+import Footer from '../Common/Footer/Footer';
 
-class Create extends Component {
+class Edit extends Component {
 
-    constructor() {
-        super();
-        this.ref = firebase.firestore().collection('boards');
+    constructor(props) {
+        super(props);
         this.state = {
+            key: '',
             title: '',
             description: '',
             author: ''
@@ -20,60 +20,73 @@ class Create extends Component {
     }
 
     componentDidMount() {
-
+        const ref = firebase.firestore().collection('boards').doc(this.props.match.params.id);
+        ref.get().then((doc) => {
+                if (doc.exists) {
+                    const board = doc.data();
+                    // 현재 Data 보여주기
+                    this.setState(
+                        {
+                            key: doc.id, 
+                            title: board.title, 
+                            description: board.description, 
+                            author: board.author}
+                    );
+                } else {
+                    console.log("No such document!");
+                }
+            });
     }
 
     onChange = (e) => {
-        const state = this.state;
+        const state = this.state
         state[e.target.name] = e.target.value;
-        this.setState(state);
+        this.setState({board: state});
     }
 
     onSubmit = (e) => {
         e.preventDefault();
 
-        const { title,  description, author } = this.state;
+        const {title, description, author} = this.state;
 
-        this.ref.add({
-            title,
-            description,
-            author
-        }).then((docRef) => {
-            this.setState({
-                title: '',
-                description: '',
-                author: ''
+        const updateRef = firebase
+            .firestore()
+            .collection('boards')
+            .doc(this.state.key);
+        updateRef
+            .set({title, description, author})
+            .then((docRef) => {
+                this.setState({key: '', title: '', description: '', author: ''});
+                this
+                    .props
+                    .history
+                    .push("/show/" + this.props.match.params.id)
+            })
+            .catch((error) => {
+                console.error("Error adding document: ", error);
             });
-            this.props.history.push("/gallery")
-        })
-        .catch((error) => {
-            console.log("Error adding document : ", error);
-        })
     }
 
     render() {
-
-        const {title, description, author} = this.state;
-
         return (
             <div>
+
                 <Header />
 
             <div className="boardsFrame">
 
-            {/*  */}
+                {/*  */}
             <div class="container">
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h3 class="panel-title">
-                            게시판
+                            수정페이지
                         </h3>
                     </div>
                     <div class="panel-body">
                         <h4>
-                            <Link to="/gallery/show" class="">리스트 바로가기</Link>
+                            <Link to={`/show/${this.state.key}`} class="">리스트 바로가기!!</Link>
                         </h4>
-
                         {/* 제출할 폼 */}
                         <form onSubmit={this.onSubmit}>
                             <div class="form-group">
@@ -82,19 +95,19 @@ class Create extends Component {
                                     type="text"
                                     class="form-control"
                                     name="title"
-                                    value={title}
+                                    value={this.state.title}
                                     onChange={this.onChange}
-                                    placeholder="제목을 입력해주세요."/>
+                                    placeholder="Title"/>
                             </div>
                             <div class="form-group">
                                 <label for="description">내용:</label>
-                                <textArea
+                                <input
+                                    type="text"
                                     class="form-control"
                                     name="description"
+                                    value={this.state.description}
                                     onChange={this.onChange}
-                                    placeholder="내용을 입력해주세요."
-                                    cols="80"
-                                    rows="10">{description}</textArea>
+                                    placeholder="Description"/>
                             </div>
                             <div class="form-group">
                                 <label for="author">글쓴이:</label>
@@ -102,24 +115,23 @@ class Create extends Component {
                                     type="text"
                                     class="form-control"
                                     name="author"
-                                    value={author}
+                                    value={this.state.author}
                                     onChange={this.onChange}
-                                    placeholder="최현지"/>
+                                    placeholder="Author"/>
                             </div>
                             {/* 제출 버튼 */}
-                            <button type="submit" class="">등록</button>
+                            <button type="submit" class="">수정하기</button>
                         </form>
                     </div>
                 </div>
             </div>
-
             </div>
 
-<Footer />
+            <Footer />
+
             </div>
         );
     }
-
 }
 
-export default Create;
+export default Edit;

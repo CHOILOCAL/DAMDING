@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 
-import Header from '../components/Header/Header';
+import Header from '../components/Common/Header/Header';
+import Footer from '../components/Common/Footer/Footer';
+
 import Gnb from "../components/Gnb";
-import Footer from "../components/Footer/Footer";
 import Intro from "../components/Intro";
 import SubMain01 from "../components/SubMain01";
 import SubMain02 from "../components/SubMain02";
@@ -11,7 +12,7 @@ import SubMain03 from "../components/SubMain03";
 import '../animation/Animation.css';
 import '../animation/Warning.css';
 
-class Main extends Component {
+class MainContainer extends Component {
 
     render() {
 
@@ -21,7 +22,6 @@ class Main extends Component {
 
         return (
             <div>
-
                 {/* fixed Header */}
                 {isAuth ? undefined : <Header />}
                 { this.props.children } {/* 내가 지정한 라우트가 표시됨 */}
@@ -48,4 +48,4 @@ class Main extends Component {
 
 
 
-export default Main;
+export default MainContainer;

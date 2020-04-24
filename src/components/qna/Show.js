@@ -4,8 +4,8 @@ import {Link} from 'react-router-dom';
 
 import '../../css/boards.css';
 
-import Header from '../Header/Header';
-import Footer from '../Footer/Footer';
+import Header from '../Common/Header/Header';
+import Footer from '../Common/Footer/Footer';
 
 class Show extends Component {
 
