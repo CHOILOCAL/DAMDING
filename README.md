@@ -1,9 +1,6 @@
 
-1.    04. 20 코드 정리 전 commit 시점입니다. 
-
-
 ### ***********************************
-### 폴더 구조(2020. 04. 21)----------------
+### 폴더 구조(2020. 04. 21)
 ### ***********************************
 
 |-------------------.firebase<br>
@@ -76,3 +73,47 @@
 |.firebaserc<br>
 |database.rules.json<br>
 |firebase.json<br>
+
+# Project Subject
+#### 담딩투어 홈페이지 (몽골투어) 2020. 01 - 2020. 07
+
+##### 때는 바야흐로 2019년 12월 연말로 돌아갑니다...
+ 
+# Project Contents
+
+> The overriding design goal for Markdown's
+> formatting syntax is to make it as readable
+> as possible. The idea is that a
+> Markdown-formatted document should be
+> publishable as-is, as plain text, without
+> looking like it's been marked up with tags
+> or formatting instructions.
+> 
+# Tech
+
+ - 
+ - 
+
+# Installation
+
+# Plugins or License
+
+| Plugin | README |
+| ------ | ------ |
+| Dropbox | [plugins/dropbox/README.md][PlDb] |
+| GitHub | [plugins/github/README.md][PlGh] |
+| Google Drive | [plugins/googledrive/README.md][PlGd] |
+| OneDrive | [plugins/onedrive/README.md][PlOd] |
+| Medium | [plugins/medium/README.md][PlMe] |
+| Google Analytics | [plugins/googleanalytics/README.md][PlGa] |
+
+# Structure of Folder
+
+# License
+
+```sh
+```
+
+# Etc
+
+**Free Software, Hell Yeah!**
