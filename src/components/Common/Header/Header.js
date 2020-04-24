@@ -97,12 +97,12 @@ class Header extends React.Component {
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="mr-auto">
                             <Nav.Link href="/main">메인</Nav.Link>
-                            <Nav.Link href="/about">담딩투어</Nav.Link>
-                            <Nav.Link href="/damding">담딩가족</Nav.Link>
-                            <Nav.Link href="/exp">투어설명서</Nav.Link>
-                            <Nav.Link href="/product">투어상품</Nav.Link>
-                            <Nav.Link href="/withme">동행구하기</Nav.Link>
-                            <Nav.Link href="/story">여행이야기</Nav.Link>
+                            <Nav.Link href="/aboutDaming">담딩투어</Nav.Link>
+                            <Nav.Link href="/damdingFamily">담딩가족</Nav.Link>
+                            <Nav.Link href="/expTour">투어설명서</Nav.Link>
+                            <Nav.Link href="/goodsTour">투어상품</Nav.Link>
+                            <Nav.Link href="/withmeTogether">동행구하기</Nav.Link>
+                            <Nav.Link href="/storyUnMe">여행이야기</Nav.Link>
                             <Nav.Link href="/qna">문의</Nav.Link>
                             {/* <NavDropdown title="?" id="basic-nav-dropdown">
                                 <NavDropdown.Item href=""></NavDropdown.Item>
