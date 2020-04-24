@@ -20,17 +20,17 @@ class Edit extends Component {
     }
 
     componentDidMount() {
-        const ref = firebase
-            .firestore()
-            .collection('boards')
-            .doc(this.props.match.params.id);
-        ref
-            .get()
-            .then((doc) => {
+        const ref = firebase.firestore().collection('boards').doc(this.props.match.params.id);
+        ref.get().then((doc) => {
                 if (doc.exists) {
                     const board = doc.data();
+                    // 현재 Data 보여주기
                     this.setState(
-                        {key: doc.id, title: board.title, description: board.description, author: board.author}
+                        {
+                            key: doc.id, 
+                            title: board.title, 
+                            description: board.description, 
+                            author: board.author}
                     );
                 } else {
                     console.log("No such document!");
@@ -80,16 +80,17 @@ class Edit extends Component {
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h3 class="panel-title">
-                            수정하기
+                            수정페이지
                         </h3>
                     </div>
                     <div class="panel-body">
                         <h4>
-                            <Link to={`/show/${this.state.key}`} class="">다쉬 리스트!!</Link>
+                            <Link to={`/show/${this.state.key}`} class="">리스트 바로가기!!</Link>
                         </h4>
+                        {/* 제출할 폼 */}
                         <form onSubmit={this.onSubmit}>
                             <div class="form-group">
-                                <label for="title">Title:</label>
+                                <label for="title">제목:</label>
                                 <input
                                     type="text"
                                     class="form-control"
@@ -109,7 +110,7 @@ class Edit extends Component {
                                     placeholder="Description"/>
                             </div>
                             <div class="form-group">
-                                <label for="author">Author:</label>
+                                <label for="author">글쓴이:</label>
                                 <input
                                     type="text"
                                     class="form-control"
@@ -118,15 +119,16 @@ class Edit extends Component {
                                     onChange={this.onChange}
                                     placeholder="Author"/>
                             </div>
+                            {/* 제출 버튼 */}
                             <button type="submit" class="">수정하기</button>
                         </form>
                     </div>
                 </div>
             </div>
-
             </div>
 
             <Footer />
+
             </div>
         );
     }

@@ -11,9 +11,7 @@ class Create extends Component {
 
     constructor() {
         super();
-        this.ref = firebase
-            .firestore()
-            .collection('boards');
+        this.ref = firebase.firestore().collection('boards');
         this.state = {
             title: '',
             description: '',
@@ -61,7 +59,6 @@ class Create extends Component {
             <div>
                 <Header />
 
-
             <div className="boardsFrame">
 
             {/*  */}
@@ -74,8 +71,10 @@ class Create extends Component {
                     </div>
                     <div class="panel-body">
                         <h4>
-                            <Link to="/gallery/show" class="btn btn-primary">리스트 바로가기</Link>
+                            <Link to="/gallery/show" class="">리스트 바로가기</Link>
                         </h4>
+
+                        {/* 제출할 폼 */}
                         <form onSubmit={this.onSubmit}>
                             <div class="form-group">
                                 <label for="title">제목:</label>
@@ -95,7 +94,7 @@ class Create extends Component {
                                     onChange={this.onChange}
                                     placeholder="내용을 입력해주세요."
                                     cols="80"
-                                    rows="3">{description}</textArea>
+                                    rows="10">{description}</textArea>
                             </div>
                             <div class="form-group">
                                 <label for="author">글쓴이:</label>
@@ -107,7 +106,8 @@ class Create extends Component {
                                     onChange={this.onChange}
                                     placeholder="최현지"/>
                             </div>
-                            <button type="submit" class="btn btn-success">등록</button>
+                            {/* 제출 버튼 */}
+                            <button type="submit" class="">등록</button>
                         </form>
                     </div>
                 </div>

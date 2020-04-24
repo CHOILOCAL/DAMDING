@@ -18,13 +18,9 @@ class Show extends Component {
     }
 
     componentDidMount() {
-        const ref = firebase
-            .firestore()
-            .collection('boards')
-            .doc(this.props.match.params.id);
-        ref
-            .get()
-            .then((doc) => {
+        const ref = firebase.firestore().collection('boards').doc(this.props.match.params.id);
+
+        ref.get().then((doc) => {
                 if (doc.exists) {
                     this.setState({board: doc.data(), key: doc.id, isLoading: false});
                 } else {
@@ -34,17 +30,9 @@ class Show extends Component {
     }
 
     delete(id) {
-        firebase
-            .firestore()
-            .collection('boards')
-            .doc(id)
-            .delete()
-            .then(() => {
+        firebase.firestore().collection('boards').doc(id).delete().then(() => {
                 console.log("Document successfully deleted!");
-                this
-                    .props
-                    .history
-                    .push("/")
+                this.props.history.push("/")
             })
             .catch((error) => {
                 console.error("Error removing document: ", error);
@@ -53,9 +41,9 @@ class Show extends Component {
 
     render() {
         return (
-<div>
-
-<Header />
+        <div>
+          
+          <Header />
   
           <div class="container">
             <div class="panel panel-default">

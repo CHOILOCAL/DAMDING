@@ -45,6 +45,7 @@ class App extends Component {
                 <Route path="/qna" component={QnaContainer}/>
                 <Route path="/gallery" component={GalleryComponent}/>
                 <Route path="/box" component={BoxComponent}/> {/* boards routing */}
+                
                 <Route path='/edit/:id' component={Edit}/>
                 <Route path='/create' component={Create}/>
                 <Route path='/show/:id' component={Show}/>

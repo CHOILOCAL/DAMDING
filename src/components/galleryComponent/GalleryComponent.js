@@ -50,6 +50,8 @@ class GalleryComponent extends Component {
 
                 <div className="boardsFrame">
 
+                    
+
                     {/*  */}
                     <div class="container">
                         <div class="panel panel-default">

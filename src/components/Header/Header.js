@@ -81,7 +81,7 @@ class Header extends React.Component {
                                 <Nav.Link className="css-header-letters" href="/about" disabled="disabled">담딩투어(준비중)</Nav.Link>
                             </Nav.Item>
                             <Nav.Item>
-                                <Nav.Link className="css-header-letters" href="/exp" disabled="disabled">투어설명서(준비중)</Nav.Link>
+                                <Nav.Link className="css-header-letters" href="/exp" disabled="">투어설명서(준비중)</Nav.Link>
                             </Nav.Item>
                             <Nav.Item>
                                 <Nav.Link className="css-header-letters" href="/product" disabled="disabled">투어상품(준비중)</Nav.Link>

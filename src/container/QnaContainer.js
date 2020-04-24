@@ -12,7 +12,10 @@ import QnaPost from "../components/qnaComponent/QnaPost";
 import * as service from '../../src/services/post';
 import Warning from '../Error/Warning';
 
+import { Container, Row, Col, Image } from 'react-bootstrap';
+
 class QnaContainer extends Component {
+
 
     // state 초기값 설정
     constructor(props) {
@@ -121,11 +124,30 @@ class QnaContainer extends Component {
         return(
             <div>
                 <Header />
+
+                <div>
+                <Container>
+                        <Row>
+                            <Col xs={6} md={4}>
+                                <Image src="holder.js/171x180" rounded="rounded"/>
+                            </Col>
+                            <Col xs={6} md={4}>
+                                <Image src="holder.js/171x180" roundedCircle="roundedCircle"/>
+                            </Col>
+                            <Col xs={6} md={4}>
+                                <Image src="holder.js/171x180" thumbnail="thumbnail"/>
+                            </Col>
+                        </Row>
+                    </Container>
+                </div>
+
+
                 <QnaWrapper>
                     <Navigate postId={postId} disable={fetching} onClick={this.handleNavigateClick} />
                     <QnaPost postId={postId} title={post.title} body={post.body} comments={comments}/>
                     <Warning visible={warningVisibility} message="페이지가 존재하지 않습니다."/>
-                    </QnaWrapper>
+                </QnaWrapper>
+
                 <Footer />
             </div>
         )
