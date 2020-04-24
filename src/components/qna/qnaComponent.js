@@ -1,9 +1,6 @@
 import React, {Component} from 'react';
-import Header from "../Common/Header/Header";
-import Footer from "../Common/Footer/Footer";
 
 import firebase from '../../Firebase';
-// import {Query} from 'mongoose';
 
 import {Link} from 'react-router-dom';
 
@@ -45,19 +42,13 @@ class qnaComponent extends Component {
     render() {
         return (
             <div>
-
-                <Header/>
-
                 <div className="boardsFrame">
-
-                    
-
                     {/*  */}
                     <div class="container">
                         <div class="panel panel-default">
                             <div class="panel-heading">
                                 <h3 class="panel-title">
-                                    게쉬판
+                                    문의게시판
                                 </h3>
                             </div>
                             <div class="panel-body">
@@ -69,7 +60,7 @@ class qnaComponent extends Component {
                                         <tr>
                                             <th>제목</th>
                                             <th>내용</th>
-                                            <th>글쓴이</th>
+                                            <th>작성자</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -93,8 +84,6 @@ class qnaComponent extends Component {
                         </div>
                     </div>
                 </div>
-
-                <Footer/>
             </div>
         )
     }
