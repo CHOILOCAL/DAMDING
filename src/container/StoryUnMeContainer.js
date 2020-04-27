@@ -139,20 +139,37 @@ class StoryUnMeContainer extends Component {
                     <div ref={el => this.mapContainer = el} className="mapContainer" />
                 </div>
 
-                <div>
-                  
-                    <Container style={{height: '500px'}}>
+                <div className="mapContainer-css">
+                    <Container>
                         <Row>
-                            <Col xs={3} md={2}>
+                            <Col xs={6} md={1}>
                             <Image src="http://placehold.it/90x90" rounded="rounded"/>
                             </Col>
-                            <Col xs={3} md={2}>
+                            <Col xs={6} md={1}>
                             <Image src="http://placehold.it/90x90" rounded="roundedCircle"/>
                             </Col>
-                            <Col xs={3} md={2}>
+                            <Col xs={6} md={1}>
                             <Image src="http://placehold.it/90x90" rounded="rounded"/>
                             </Col>
-                            <Col xs={3} md={2}>
+                            <Col xs={6} md={1}>
+                            <Image src="http://placehold.it/90x90" rounded="roundedCircle"/>
+                            </Col>
+                            <Col xs={6} md={1}>
+                            <Image src="http://placehold.it/90x90" rounded="roundedCircle"/>
+                            </Col>
+                            <Col xs={6} md={1}>
+                            <Image src="http://placehold.it/90x90" rounded="roundedCircle"/>
+                            </Col>
+                            <Col xs={6} md={1}>
+                            <Image src="http://placehold.it/90x90" rounded="roundedCircle"/>
+                            </Col>
+                            <Col xs={6} md={1}>
+                            <Image src="http://placehold.it/90x90" rounded="roundedCircle"/>
+                            </Col>
+                            <Col xs={6} md={1}>
+                            <Image src="http://placehold.it/90x90" rounded="roundedCircle"/>
+                            </Col>
+                            <Col xs={6} md={1}>
                             <Image src="http://placehold.it/90x90" rounded="roundedCircle"/>
                             </Col>
                         </Row>
