@@ -39,9 +39,9 @@ class StoryUnMeContainer extends Component {
             warningVisibility: false,
             
             // map gl
-            lng: 98.345,
-            lat: 46.035,
-            zoom: 4.14
+            lng: 98.345, // 위도
+            lat: 46.035, // 경도
+            zoom: 4.14 // 줌
         };
         console.log("post : " + this.state.post);
         console.log("post > title : " + this.state.post.title);
@@ -136,25 +136,27 @@ class StoryUnMeContainer extends Component {
                 <Header/> {/* map */}
 
                 <div className="mapdivest-css">
-                <div className="mapdiv-css">
                     <div ref={el => this.mapContainer = el} className="mapContainer" />
-                </div>
                 </div>
 
                 <div>
-                    {/* <Container>
+                  
+                    <Container style={{height: '500px'}}>
                         <Row>
-                            <Col xs={6} md={4}>
-                                <Image src="http://placehold.it/192x200" rounded="rounded"/>
+                            <Col xs={3} md={2}>
+                            <Image src="http://placehold.it/90x90" rounded="rounded"/>
                             </Col>
-                            <Col xs={6} md={4}>
-                                <Image src="http://placehold.it/192x200" roundedCircle="roundedCircle"/>
+                            <Col xs={3} md={2}>
+                            <Image src="http://placehold.it/90x90" rounded="roundedCircle"/>
                             </Col>
-                            <Col xs={6} md={4}>
-                                <Image src="http://placehold.it/192x200" thumbnail="thumbnail"/>
+                            <Col xs={3} md={2}>
+                            <Image src="http://placehold.it/90x90" rounded="rounded"/>
+                            </Col>
+                            <Col xs={3} md={2}>
+                            <Image src="http://placehold.it/90x90" rounded="roundedCircle"/>
                             </Col>
                         </Row>
-                    </Container> */}
+                    </Container>
 
                 </div>
 
