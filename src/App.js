@@ -14,7 +14,7 @@ import AboutDamingContainer from "./container/AboutDamingContainer";
 import DamdingFamilyContainer from "./container/DamdingFamilyContainer";
 import ExpTourContainer from "./container/ExpTourContainer";
 import GoodsTourContainer from "./container/GoodsTourContainer";
-import WithmeTogetherContainer from "./container/GoodsTourContainer";
+import WithmeTogetherContainer from "./container/WithmeTogetherContainer";
 import StoryUnMeContainer from "./container/StoryUnMeContainer";
 import QnaContainer from "./container/QnaContainer";
 

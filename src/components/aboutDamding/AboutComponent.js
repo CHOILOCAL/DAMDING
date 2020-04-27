@@ -8,7 +8,8 @@ class AboutComponent extends Component {
            <div>
                
                {/* 담딩 투어 */}
-
+               AboutComponent
+               
 
 
            </div>

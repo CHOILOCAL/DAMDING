@@ -2,19 +2,16 @@ import React, {Component} from 'react';
 
 import Header from '../components/Common/Header/Header';
 import Footer from '../components/Common/Footer/Footer';
+import firebase from '../Firebase';
 
-import expTourComponent from '../components/goodsTour/goodsTourComponent'
+import ExpTourComponent from '../components/expTour/expTourComponent';
 
 class ExpTourContainer extends Component {
 
     render() {
         return (<div>
             <Header />
-
-            <div>
-            <expTourComponent />
-            </div>
-
+            <ExpTourComponent />
             <Footer />
         </div>);
     }

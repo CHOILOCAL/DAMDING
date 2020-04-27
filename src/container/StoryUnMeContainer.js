@@ -16,7 +16,6 @@ import {Container, Row, Col, Image} from 'react-bootstrap';
 
 import '../css/StoryUnMe.css'
 
-import ReactMapGL from 'react-map-gl';
 import mapboxgl from 'mapbox-gl';
 
 
@@ -110,6 +109,9 @@ class StoryUnMeContainer extends Component {
             center: [this.state.lng, this.state.lat],
             zoom: this.state.zoom
         });
+
+        // 지도 표시 마커
+        var marker = new mapboxgl.Marker().setLngLat([107.42256, 47.90075]).addTo(map); // 테를지
     }
 
     // NavigateClick METHOD
@@ -177,7 +179,7 @@ class StoryUnMeContainer extends Component {
 
                 </div>
 
-                {/* <QnaWrapper>
+                <QnaWrapper>
                     <Navigate
                         postId={postId}
                         disable={fetching}
@@ -188,7 +190,7 @@ class StoryUnMeContainer extends Component {
                         body={post.body}
                         comments={comments}/>
                     <Warning visible={warningVisibility} message="페이지가 존재하지 않습니다."/>
-                </QnaWrapper> */}
+                </QnaWrapper>
 
                 <Footer/>
             </div>
