@@ -5,3 +5,22 @@
     height: 3em;
     background-color: rgb(236, 236, 232);
 }
+
+.myCreateBoard{
+    text-align: right;
+}
+
+.QnaBoard-div-css {
+
+    text-align: center;
+    width: 1300px;
+    height: 100%;
+
+}
+
+.row {
+    width: 1200px;
+    height: 100%;
+    text-align: center;
+    
+}

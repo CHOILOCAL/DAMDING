@@ -4,7 +4,7 @@ import firebase from '../../Firebase';
 
 import {Link} from 'react-router-dom';
 
-import '../../css/boards.css';
+import '../../css/Boards.css';
 
 class qnaComponent extends Component {
 
@@ -17,6 +17,7 @@ class qnaComponent extends Component {
         this.state = {
             boards: []
         };
+
     }
 
     onCollectionUpdate = (querySnapshot) => {
@@ -53,11 +54,12 @@ class qnaComponent extends Component {
                             </div>
                             <div class="panel-body">
                                 <h4>
-                                    <Link to="/create">글쓰기</Link>
+                                    <Link to="/create">새 글 작성</Link>
                                 </h4>
                                 <table class="table table-stripe">
                                     <thead>
                                         <tr>
+                                            <th>작성일자</th>
                                             <th>제목</th>
                                             <th>내용</th>
                                             <th>작성자</th>

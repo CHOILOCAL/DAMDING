@@ -38,19 +38,19 @@ class Header extends React.Component {
         // isLoggerd 변수 true or false
         // isLoggerd 값이 true면 로그아웃 버튼
         // isLoggerd 값이 false면 로그인 버튼
-        const checkLoginToken = {
+        // const checkLoginToken = {
 
-            if() {
-                this.state = {
-                    isLoggerd: true
-                }
-            },
-            if() {
-                this.state = {
-                    isLoggerd: false
-                }
-            }
-        }
+        //     if() {
+        //         this.state = {
+        //             isLoggerd: true
+        //         }
+        //     },
+        //     if() {
+        //         this.state = {
+        //             isLoggerd: false
+        //         }
+        //     }
+        // }
     }
 
     login = (e) => {

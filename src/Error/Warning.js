@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import "../animation/Animation.css";
 import "../animation/Warning.css";
 
@@ -11,36 +11,33 @@ class Warning extends Component {
         };
     }
 
-    componentWillReceiveProps (nextprops) {
-        if(this.props.visible && !nextprops.visible) {
+    componentWillReceiveProps(nextprops) {
+        if (this.props.visible && !nextprops.visible) {
 
-            this.setState({
-                closing: true
-            });
+            this.setState({closing: true});
 
-            setTimeout(
-                () => {
-                    this.setState({
-                        closing: false
-                    });
-                }, 1000
-            );
+            setTimeout(() => {
+                this.setState({closing: false});
+            }, 1000);
         }
     }
- 
-    render() {
-        
-        const { visible, message } = this.props;
-        const { closing } = this. state;
 
-        if(!visible && !closing) {
+    render() {
+
+        const {visible, message} = this.props;
+        const {closing} = this.state;
+
+        if (!visible && !closing) {
             return null
         }
 
         return (
             <div className="Warning-wrapper">
-                <div className={`Warning ${closing?'zoomInUp':'zoomInUp'} animated`}>                
-                    { message }
+                <div
+                    className={`Warning ${closing
+                        ? 'zoomInUp'
+                        : 'zoomInUp'} animated`}>
+                    {message}
                 </div>
             </div>
 

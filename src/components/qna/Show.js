@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import firebase from '../../Firebase';
 import {Link} from 'react-router-dom';
 
-import '../../css/boards.css';
+import '../../css/Boards.css';
 
 import Header from '../Common/Header/Header';
 import Footer from '../Common/Footer/Footer';

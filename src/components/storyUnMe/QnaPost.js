@@ -5,7 +5,7 @@ import CommentList from '../storyUnMe/CommentList';
 
 // import Header from '../Common/Header/Header';
 
-// 전달받는 props = title, body, comments
+// 전달받는 api props = title, body, comments
 class QnaPost extends Component {
 
     constructor(props) {
@@ -71,7 +71,7 @@ class QnaPost extends Component {
 
             <div className={`Post animated ${animation}`}>
 
-                <h1>{title}</h1>
+                <h1 className="qnapost-css">{title}</h1>
                 <p>
                     {body}
                 </p>

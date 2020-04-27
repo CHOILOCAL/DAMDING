@@ -9,7 +9,7 @@ import {Form, Col} from 'react-bootstrap';
 
 import {auth, provider} from '../../Firebase';
 
-import Header from '../../components/Common/Header/Header';
+// import Header from '../../components/Common/Header/Header';
 
 class Authentication extends React.Component {
 
