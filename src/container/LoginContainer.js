@@ -7,6 +7,9 @@ import '../snsLoginApi/kakaoLogin';
 
 import Authentication from '../components/Auth/Authentication';
 
+import { connect } from 'react-redux';
+import { logoutUser } from '../actions'; 
+
 class LoginContainer extends Component {
 
     constructor(props) {
@@ -17,22 +20,41 @@ class LoginContainer extends Component {
         };
     }
 
+    handleLogout = () => {
+        const { dispatch } = this.props;
+        dispatch(logoutUser());
+      };
+
     render() {
+
+        const { isLoggingOut, logoutError } = this.props;
 
         return (
             <div>
                 <Header user={false}/>
 
                 <Authentication mode={true} />
-                
+
+                <button onClick={this.handleLogout}>Logout</button>
+                {isLoggingOut && <p>Logging Out....</p>}
+                {logoutError && <p>Error logging out</p>}
+
                 <Footer/>
             </div>
-        )
+        );
     }
 }
+
+function mapStateToProps(state) {
+    return {
+      isLoggingOut: state.auth.isLoggingOut,
+      logoutError: state.auth.logoutError
+    };
+  }
 
 LoginContainer.defaultProps = {
     mode: false
 }
 
-export default LoginContainer;
+// export default LoginContainer;
+export default connect(mapStateToProps)(LoginContainer);

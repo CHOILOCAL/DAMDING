@@ -1,4 +1,7 @@
 import * as firebase from 'firebase';
+import firebaseapp from 'firebase/app';
+import 'firebase/auth';
+import 'firebase/firestore';
 
 // 파이어베이스 설정
 const settings = {
@@ -15,7 +18,10 @@ const config = {
     appId: "1:35981381532:web:40df41e3c6151c95e28259",
     measurementId: "G-RVRD2P7N9T"
 };
-firebase.initializeApp(config);
+
+export const myFirebase = firebase.initializeApp(config);
+const baseDb = myFirebase.firestore();
+export const db = baseDb;
 
 firebase.firestore().settings(settings);
 

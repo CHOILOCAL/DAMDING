@@ -20,6 +20,7 @@ import '../../../css/Header.css';
 import Authentication from '../../Auth/Authentication';
 
 // import firebase, { auth, provider } from '../../Firebase';
+import { logoutUser } from '../../../actions'; 
 
 class Header extends React.Component {
 
@@ -33,37 +34,30 @@ class Header extends React.Component {
         };
     }
 
-    componentDidMount() {
+    componentDidMount(props) {
         // 로그인 세션 or 토큰이 있는지 확인
         // isLoggerd 변수 true or false
         // isLoggerd 값이 true면 로그아웃 버튼
         // isLoggerd 값이 false면 로그인 버튼
         // const checkLoginToken = {
 
-        //     if() {
-        //         this.state = {
-        //             isLoggerd: true
-        //         }
-        //     },
-        //     if() {
-        //         this.state = {
-        //             isLoggerd: false
-        //         }
+        // const { isLoggerd } = props;
+
+        // if(isLoggerd) {
+        //     this.state = {
+        //         isLoggerd: true
+        //     }
+        // } else {
+        //     this.state = {
+        //         isLoggerd: false
         //     }
         // }
     }
 
-    login = (e) => {
-        console.log("login");
-    }
-
-    logout = (e) => {
-        console.log("logout");
-    }
-
-    signup = (e) => {
-        console.log("signup");
-    }
+    handleLogout = () => {
+        const { dispatch } = this.props;
+        dispatch(logoutUser());
+    };
 
     render() {
 
@@ -80,10 +74,12 @@ class Header extends React.Component {
             </div>
         );
 
+        
+
         // 로그인 후
         const logoutButton = (
             <Link to="/main">
-                <Button variant="light" onClick={this.logout} className="logoutButton">로그아웃</Button>
+                <Button variant="light" onClick={this.handleLogout} className="logoutButton">로그아웃</Button>
             </Link>
         );
 
@@ -131,7 +127,8 @@ class Header extends React.Component {
 
 // 초기값 세팅
 Header.defaultProps = {
-    user: false
+    user: false,
+    isLoggerd: false
 };
 
 // Login

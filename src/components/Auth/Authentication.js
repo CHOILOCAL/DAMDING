@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component }from 'react';
 
 import "../../css/Authentication.css";
 import {Link} from 'react-router-dom';
@@ -10,6 +10,51 @@ import {Form, Col} from 'react-bootstrap';
 import {auth, provider} from '../../Firebase';
 
 // import Header from '../../components/Common/Header/Header';
+import '../../css/Auth.css';
+
+// 로그인 스타일 import
+import { connect } from "react-redux";
+import { Redirect } from "react-router-dom";
+import { loginUser } from '../../actions';
+
+// 로그인 Material UI
+import { withStyles } from "@material-ui/styles";
+import Avatar from "@material-ui/core/Avatar";
+import Button from "@material-ui/core/Button";
+import TextField from "@material-ui/core/TextField";
+import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
+import Typography from "@material-ui/core/Typography";
+import Paper from "@material-ui/core/Paper";
+import Container from "@material-ui/core/Container";
+
+// 로그인 스타일
+const styles = () => ({
+    "@global": {
+      body: {
+        backgroundColor: "#fff"
+      }
+    },
+    paper: {
+      marginTop: 100,
+      display: "flex",
+      padding: 20,
+      flexDirection: "column",
+      alignItems: "center"
+    },
+    avatar: {
+      marginLeft: "auto",
+      marginRight: "auto",
+      backgroundColor: "#f50057"
+    },
+    form: {
+      marginTop: 1
+    },
+    errorText: {
+      color: "#f50057",
+      marginBottom: 5,
+      textAlign: "center"
+    }
+  });
 
 class Authentication extends React.Component {
 
@@ -31,17 +76,7 @@ class Authentication extends React.Component {
         });
     }
 
-    handleChange(e) {
-        let nextState = {};
-        nextState[e.target.name] = e.target.value;
-        this.setState(nextState);
-        // this.setState({     [e.target.name]: e.target.value });
-    }
-
-    login(e) {
-        
-    }
-
+    // 로그아웃
     logout(e) {
         // Google Logout
         auth
@@ -53,6 +88,7 @@ class Authentication extends React.Component {
             });
     }
 
+    // google 로그인
     googleLogin = (e) => {
 
         // Google API
@@ -66,184 +102,110 @@ class Authentication extends React.Component {
             console.log("auth ::: ", auth);
     }
 
-    kakoLogin = (e) => {
-        // kakaoTalk API
+    handleChange(e) {
+        let nextState = {};
+        nextState[e.target.name] = e.target.value;
+        this.setState(nextState);
+        // this.setState({     [e.target.name]: e.target.value });
     }
 
+    // email 로그인
+    state = { email: "", password: "" };
+
+    handleEmailChange = ({ target }) => {
+        this.setState({ email: target.value });
+      };
+    
+      handlePasswordChange = ({ target }) => {
+        this.setState({ password: target.value });
+      };
+    
+      handleSubmit = () => {
+        const { dispatch } = this.props;
+        const { email, password } = this.state;
+    
+        dispatch(loginUser(email, password));
+      };
+    
     render() {
 
-        // 회원가입, 로그인 뷰에서 보이는 중복 코드
-        const commonInputBox = (
-            <div className="basicinfo-input-id">
-                <label>아이디</label>
-                <input
-                    name="username"
-                    type="text"
-                    className="validate"
-                    placeholder="아이디"
-                    value={this.state.username}/>
+        const { classes, loginError, isAuthenticated } = this.props;
+
+        if (isAuthenticated) {
+            console.log('로그인 상태입니다');
+            return <Redirect to="/main" />; // login시 main페이지로 리다이렉트
+        } else {
+            return (
+                <Container component="main" maxWidth="xs">
+                <Paper className={classes.paper}>
+                <Avatar className={classes.avatar}>
+                <LockOutlinedIcon />
+                </Avatar>
+                <Typography component="h1" variant="h5">
+              Sign in
+            </Typography>
+
+            <TextField
+              variant="outlined"
+              margin="normal"
+              fullWidth
+              id="email"
+              label="Email Address"
+              name="email"
+              onChange={this.handleEmailChange}
+            />
+            <TextField
+              variant="outlined"
+              margin="normal"
+              fullWidth
+              name="password"
+              label="Password"
+              type="password"
+              id="password"
+              onChange={this.handlePasswordChange}
+            />
+{loginError && (
+              <Typography component="p" className={classes.errorText}>
+                Incorrect email or password.
+              </Typography>
+            )}
+            <Button
+              type="button"
+              fullWidth
+              variant="contained"
+              color="primary"
+              className={classes.submit}
+              onClick={this.handleSubmit}
+            >
+              Sign In
+            </Button>
+
+            {/* 구글 로그인 */}
+            <div className="google-loginbutton">
+                <button onClick={this.googleLogin}>구글로 로그인</button>
             </div>
-        )
 
-        // 로그인 뷰
-        const loginView = (
-            <div className="view-row">
-                {
-                    this.state.user
-                        ?
-                        // 로그인 되어있을 경우 
-                        <div>
-                                <div className="logout-button">
-                                    <button onClick={this.logout}>로그아웃</button>
-
-                                    {/* googld profile photo */}
-                                    <div className='user-profile'>
-                                        <p className='user-profile-name'>{this.state.user.displayName}
-                                            님</p>
-                                        <img
-                                            src={this.state.user.photoURL}
-                                            alt="Not Found"
-                                            className='user-profile-photoURL'/>
-                                    </div>
-
-                                </div>
-
-                        </div>
-
-                        :
-
-                        // 로그인 되어있지않은 경우 
-                        <div>
-                                {/* 아이디 */}
-                                <div className="basicinfo-input-id">
-                                    <label>아이디</label>
-                                    <input
-                                        name="username"
-                                        type="text"
-                                        className="validate"
-                                        placeholder="아이디"
-                                        value={this.state.username}/>
-                                </div>
-
-                                {/* 비밀번호 */}
-                                <div className="basicinfo-input-pw">
-                                    <label>비밀번호</label>
-                                    <input
-                                        name="password"
-                                        type="password"
-                                        className="validate"
-                                        placeholder="비밀번호"
-                                        value={this.state.password}/>
-                                </div>
-
-                                {/* 로그인 버튼 */}
-                                <div className="login-button">
-                                    <div className="kakao-loginbutton">
-                                        <button onClick={this.kakoLogin}>카카오로 로그인</button>
-                                    </div>
-                                    <div className="google-loginbutton">
-                                        <button onClick={this.googleLogin}>구글로 로그인</button>
-                                    </div>
-                                    <div className="damding-loginbutton">
-                                        <button variant="" className="damding-loginbutton-t" onClick={this.login}>찐아디,패스워드 로그인</button>
-                                    </div>
-
-                                    {/* 회원가입 안내 */}
-                                    <div className="damding-signupbutton">아이디 없음?
-                                        <Link to="/signup">회원가입하러가기</Link>
-                                    </div>
-                                </div>
-                                {/* div 끝 */}
-                        </div>
-                }
+            {/* 회원가입 안내 */}
+            <div className="damding-signupbutton">아이디 없음?
+            <Link to="/signup">회원가입하러가기</Link>
             </div>
-        )
 
-        // 회원가입 뷰
-        const signupView = (
-            // <div className="card-content">
-            <div className="view-row">
-
-                {/* 공통 <div /> */}
-                {commonInputBox}
-
-                <div className="input-field col s12 username">
-                    <label>아이디</label>
-                    <input name="username" type="text" className="validate" placeholder="아이디 입력해"/>
-                </div>
-                <div className="input-field col s12">
-                    <label>비밀번호</label>
-                    <input name="password" type="text" className="validate" placeholder="패스워드 입력해"/>
-                </div>
-                <div className="input-field col s12">
-                    <label>비밀번호확인</label>
-                    <input
-                        name="passwordCheck"
-                        type="text"
-                        className="validate"
-                        placeholder="패스워드 또 입력해"/>
-                </div>
-                <div className="input-field col s12">
-                    <label>주소</label>
-                    <input name="address" type="text" className="validate" placeholder="주소주소"/>
-                </div>
-                <div className="input-field col s12">
-                    <Form.Row>
-                        <Form.Group as={Col} controlId="formGridState">
-                            <Form.Label>국가</Form.Label>
-                            <Form.Control as="select" value="Choose...">
-                                <option>-</option>
-                                <option>대한민국</option>
-                            </Form.Control>
-                        </Form.Group>
-                    </Form.Row>
-                </div>
-
-                {/* 담딩투어 경험 Y/N */}
-                <Form.Group id="formGridCheckbox">
-                    <Form.Check type="checkbox" label="담딩투어 경험이 있으시면 체크해주세요. "/>
-                </Form.Group>
-
-                <a className="waves-effect waves-light btn">회원가입</a>
-            </div>
-            // </div>
-        );
-
-        return (
-            <div className="container auth">
-                <Link className="logo" to="/main">DAMDING</Link>
-                <div className="card">
-                    {/* <div className="header blue white-text center"> */}
-                    <div className="card-subject">{
-                            this.props.mode
-                                ? "로그인해주세요"
-                                : "환영합니다"
-                        }
-                        {
-                            this.props.mode
-                                ? loginView
-                                : signupView
-                        }
-                    </div>
-                </div>
-            </div>
-            // </div>
-        );
+                </Paper>
+                </Container>
+            )
+        }
     }
 }
 
-/* setting a propsType */
-// Authentication.propTypes = {     mode: React.PropTypes.bool,     onLogin:
-// React.PropTypes.func,     onRegister: React.PropTypes.func };
-/* setting a defaultProps value */
-Authentication.defaultProps = {
-    mode: true,
-    onLogin: (id, pw) => {
-        console.log("login function not defined");
-    },
-    onRegister: (id, pw) => {
-        console.log("register function not defined");
-    }
-};
+    
 
-export default Authentication;
+// Login
+function mapStateToProps(state) {
+    return {
+      isLoggingIn: state.auth.isLoggingIn,
+      loginError: state.auth.loginError,
+      isAuthenticated: state.auth.isAuthenticated
+    };
+  }
+
+export default withStyles(styles)(connect(mapStateToProps)(Authentication));

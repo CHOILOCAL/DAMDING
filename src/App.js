@@ -1,7 +1,9 @@
-import 'bootstrap/dist/css/bootstrap.min.css';
+import React from "react";
 
-import React, {Component} from 'react';
-import {Route} from 'react-router-dom';
+import { Route, Switch } from "react-router-dom";
+import { connect } from "react-redux";
+
+import ProtectedRoute from "./components/ProtectedRoute";
 
 // Container
 import AnimeContainer from './container/AnimeContainer';
@@ -25,23 +27,23 @@ import Edit from "./components/qna/Edit";
 import './animation/Animation.css';
 import './animation/Warning.css';
 
-// Redux naver login api var passport = require('passport'); var app =
-// express(); app.use(passport.initialize()); app.use(passport.session());
+function App(props) {
+  const { isAuthenticated, isVerifying } = props;
+  return (
+    <Switch>
+      <ProtectedRoute
+        exact
+        path="/"
+        component={AnimeContainer}
+        isAuthenticated={isAuthenticated}
+        isVerifying={isVerifying}
+      />
+      <Route exact="/main" path="/main" component={MainContainer}/>
 
-class App extends Component {
+      <Route path="/login" component={LoginContainer} />
+      <Route path="/signup" component={SignupContainer}/>
 
-    render() {
-
-        return (
-            <main>
-                <Route exact="exact" path="/" component={AnimeContainer}/>
-                <Route exact="/main" path="/main" component={MainContainer}/>
-
-                <Route path="/signup" component={SignupContainer}/>
-                <Route path="/login" component={LoginContainer}/>
-
-                 {/* Header 순서 */}
-                 {/*
+{/*
                  메인
                  담딩투어
                  담딩가족
@@ -50,23 +52,30 @@ class App extends Component {
                  동행구하기
                  여행이야기
                  문의
-                 */}
-                <Route path="/aboutDaming" component={AboutDamingContainer}/>
-                <Route path="/damdingFamily" component={DamdingFamilyContainer}/>
-                <Route path="/expTour" component={ExpTourContainer}/>
-                <Route path="/goodsTour" component={GoodsTourContainer}/>
-                <Route path="/withmeTogether" component={WithmeTogetherContainer}/>
-                <Route path="/storyUnMe" component={StoryUnMeContainer}/>
+                 */
+            }
+      <Route path="/aboutDaming" component={AboutDamingContainer}/>
+      <Route path="/damdingFamily" component={DamdingFamilyContainer}/>
+      <Route path="/expTour" component={ExpTourContainer}/>
+      <Route path="/goodsTour" component={GoodsTourContainer}/>
+      <Route path="/withmeTogether" component={WithmeTogetherContainer}/>
+      <Route path="/storyUnMe" component={StoryUnMeContainer}/>
 
-                <Route path="/qna" component={QnaContainer}/> {/* boards routing */}
-                
-                {/* qnaComponent */}
-                <Route path='/edit/:id' component={Edit}/>
-                <Route path='/create' component={Create}/>
-                <Route path='/show/:id' component={Show}/>
-            </main>
-        );
-    }
+      <Route path="/qna" component={QnaContainer}/> {/* boards routing */}
+      
+      {/* qnaComponent */}
+      <Route path='/edit/:id' component={Edit}/>
+      <Route path='/create' component={Create}/>
+      <Route path='/show/:id' component={Show}/>
+    </Switch>
+  );
 }
 
-export default App;
+function mapStateToProps(state) {
+  return {
+    isAuthenticated: state.auth.isAuthenticated,
+    isVerifying: state.auth.isVerifying
+  };
+}
+
+export default connect(mapStateToProps)(App);

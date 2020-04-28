@@ -1,0 +1,25 @@
+.card {
+    text-align: center;
+}
+
+.card-subject {
+    text-align: center;;
+}
+
+.view-row {
+    text-align: left;
+}
+
+.validate {
+    padding-left: 6%;
+    width: 60%;
+}
+
+.formcontrol-css {
+    height: 30px;
+    width: 80%;
+}
+
+#formGridCheckbox {
+    margin-left: 30px;
+}
