@@ -95,6 +95,8 @@
  - 
 
 # Installation
+error : bash: firebase: command not found
+solution :
 alias firebase="`npm config get prefix`/bin/firebase"
 
 npm install redux
@@ -104,6 +106,9 @@ npm install redux-thunk
 npm install @material-ui/core
 npm install @material-ui/icons
 
+yarn start
+yarn build
+firebase deploy
 
 # Plugins or License
 
@@ -126,3 +131,13 @@ npm install @material-ui/icons
 # Etc
 
 **Free Software, Hell Yeah!**
+
+### TODO
+
+        this.state.user = true(로그인) or false(로그아웃)
+header => 로그아웃 or 로그인/회원가입
+
+                    this.state.mode = true(회원가입) or false(로그인) view 변경
+LoginContainer => Authentication =>  SignupComponenet => mode=true, user=false 회원가입시 mode=false, user=false 변경
+                                      LoginComponenet => user=false 로그인 성공시 user.true
+

@@ -23,7 +23,7 @@ class LoginContainer extends Component {
     handleLogout = () => {
         const { dispatch } = this.props;
         dispatch(logoutUser());
-      };
+      }; 
 
     render() {
 

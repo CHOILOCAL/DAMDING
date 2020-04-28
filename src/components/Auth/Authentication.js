@@ -1,11 +1,10 @@
-import React, { Component }from 'react';
+import React from 'react';
 
 import "../../css/Authentication.css";
 import {Link} from 'react-router-dom';
 
 import '../../css/Authentication.css';
 
-import {Form, Col} from 'react-bootstrap';
 
 import {auth, provider} from '../../Firebase';
 
