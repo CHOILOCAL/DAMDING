@@ -21,6 +21,7 @@ import Authentication from '../../Auth/Authentication';
 
 // import firebase, { auth, provider } from '../../Firebase';
 import { logoutUser } from '../../../actions'; 
+import { connect } from 'react-redux';
 
 class Header extends React.Component {
 
@@ -54,10 +55,11 @@ class Header extends React.Component {
         // }
     }
 
+
     handleLogout = () => {
         const { dispatch } = this.props;
         dispatch(logoutUser());
-    };
+      }; 
 
     render() {
 
@@ -83,7 +85,14 @@ class Header extends React.Component {
             </Link>
         );
 
+    
+
+        const { isLoggingOut, logoutError } = this.props;
+
+
         return (
+
+            
 
             <div>
             {/* 시작 */}
@@ -116,6 +125,9 @@ class Header extends React.Component {
                                 this.props.isLoggerd ? logoutButton : loginButton
                             }
                         </Form>
+                        <button onClick={this.handleLogout}>Logout</button>
+                {isLoggingOut && <p>Logging Out....</p>}
+                {logoutError && <p>Error logging out</p>}
                     </Navbar.Collapse>
                 </Navbar>
 
@@ -124,6 +136,13 @@ class Header extends React.Component {
         );
     }
 }
+
+function mapStateToProps(state) {
+    return {
+      isLoggingOut: state.auth.isLoggingOut,
+      logoutError: state.auth.logoutError
+    };
+  }
 
 // 초기값 세팅
 Header.defaultProps = {
@@ -139,4 +158,4 @@ Authentication.defaultProps = {
     }
 };
 
-export default Header;
+export default connect(mapStateToProps)(Header);
