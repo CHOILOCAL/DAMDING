@@ -137,13 +137,9 @@ class StoryUnMeContainer extends Component {
             <div>
                 <Header/> {/* map */}
 
-                <div className="jumbotron">
-                    <h1>반응형 div 적용 테스트</h1>
                     <div className="mapdivest-css">
                         <div ref={el => this.mapContainer = el} className="mapContainer" />
                     </div>
-                </div>
-
               
 
                  {/* <div className="mapdivest-css">

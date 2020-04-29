@@ -23,38 +23,34 @@ import Authentication from '../../Auth/Authentication';
 import { logoutUser } from '../../../actions'; 
 import { connect } from 'react-redux';
 
+import {auth} from '../../../Firebase';
+
 class Header extends React.Component {
 
     constructor(props) {
         super(props);
         this.state = {
             // user: null  처음 로그인시에는 로그인되어있지 않은 상태
-            isLoggerd: '',
-            user: null,
+            isLoggerd: false,
+            user: '',
             mode: ''
         };
     }
 
     componentDidMount(props) {
         // 로그인 세션 or 토큰이 있는지 확인
-        // isLoggerd 변수 true or false
-        // isLoggerd 값이 true면 로그아웃 버튼
-        // isLoggerd 값이 false면 로그인 버튼
-        // const checkLoginToken = {
-
-        // const { isLoggerd } = props;
-
-        // if(isLoggerd) {
-        //     this.state = {
-        //         isLoggerd: true
-        //     }
-        // } else {
-        //     this.state = {
-        //         isLoggerd: false
-        //     }
-        // }
+        auth.onAuthStateChanged((user) => {
+            if (user) { // user가 있으면 
+                this.setState({user});
+                console.log('로그인 user 있음 ?', user);
+                this.setState({ isLoggerd: true });
+                console.log('로그인 상태입니다.', this.state.isLoggerd);
+            } else { // user가 없으면
+                this.setState({ isLoggerd: false });
+                console.log('로그아웃 상태입니다', this.state.isLoggerd);
+            }
+        });
     }
-
 
     handleLogout = () => {
         const { dispatch } = this.props;
@@ -76,8 +72,6 @@ class Header extends React.Component {
             </div>
         );
 
-        
-
         // 로그인 후
         const logoutButton = (
             <Link to="/main">
@@ -85,14 +79,9 @@ class Header extends React.Component {
             </Link>
         );
 
-    
-
         const { isLoggingOut, logoutError } = this.props;
 
-
         return (
-
-            
 
             <div>
             {/* 시작 */}
@@ -117,12 +106,9 @@ class Header extends React.Component {
                             </NavDropdown> */}
                         </Nav>
                         <Form inline="inline">
-                            {/* 검색어를 입력해주세요 */}
-                            {/* <FormControl type="text" placeholder="WWW" className="mr-sm-2"/> */}
                             {/* <Button variant="outline-success">로그인</Button> */}
-
                             {
-                                this.props.isLoggerd ? logoutButton : loginButton
+                                this.state.isLoggerd ? logoutButton : loginButton
                             }
                         </Form>
                         <button onClick={this.handleLogout}>Logout</button>
@@ -146,16 +132,6 @@ function mapStateToProps(state) {
 
 // 초기값 세팅
 Header.defaultProps = {
-    user: false,
-    isLoggerd: false
-};
-
-// Login
-Authentication.defaultProps = {
-    mode: false,
-    onLogin: (id, pw) => {
-        console.log("login function not defined");
-    }
 };
 
 export default connect(mapStateToProps)(Header);

@@ -59,18 +59,28 @@ class Authentication extends React.Component {
 
     constructor(props) {
         super(props);
+
+        // console.log('this.props.mode $', this.props.mode); // false
+
         this.state = {
             username: '',
             password: '',
-            user: null // 처음 로그인시에는 로그인되어있지 않은 상태
+            user: null, // 처음 로그인시에는 로그인되어있지 않은 상태
+            mode: '',
         };
+
+        // console.log('this.props.username', this.props.username);
+        // console.log('this.props.password', this.props.password);
+        // console.log('this.props.user', this.props.user);
+        // console.log('this.props.mode', this.props.mode); // false
     }
 
     componentDidMount() {
-        // without a relogin !!!
+        // 재로그인 없이
         auth.onAuthStateChanged((user) => {
             if (user) {
                 this.setState({user});
+                console.log('Authentication componentDidMount() auth.onAuth user :', user); // -> redirect
             }
         });
     }
@@ -98,7 +108,7 @@ class Authentication extends React.Component {
                 this.setState({user});
             });
 
-            console.log("auth ::: ", auth);
+            // console.log("auth ::: ", auth);
     }
 
     handleChange(e) {
@@ -140,8 +150,9 @@ class Authentication extends React.Component {
                 <Avatar className={classes.avatar}>
                 <LockOutlinedIcon />
                 </Avatar>
+
                 <Typography component="h1" variant="h5">
-              Sign in
+              로그인
             </Typography>
 
             <TextField
@@ -165,7 +176,7 @@ class Authentication extends React.Component {
             />
 {loginError && (
               <Typography component="p" className={classes.errorText}>
-                Incorrect email or password.
+                이메일 혹은 비밀번호를 확인해주세요.
               </Typography>
             )}
             <Button
@@ -176,17 +187,25 @@ class Authentication extends React.Component {
               className={classes.submit}
               onClick={this.handleSubmit}
             >
-              Sign In
+              로그인
             </Button>
 
-            {/* 구글 로그인 */}
-            <div className="google-loginbutton">
-                <button onClick={this.googleLogin}>구글로 로그인</button>
-            </div>
+            {/* 로 로그인 */}
+            {/* <div className="google-loginbutton"> */}
+            <Button
+              type="button"
+              fullWidth
+              variant="contained"
+              color=""
+              className={classes.submit}
+              onClick={this.googleLogin}
+            >
+              구글 로그인
+            </Button>
+            {/* </div> */}
 
             {/* 회원가입 안내 */}
-            <div className="damding-signupbutton">아이디 없음?
-            <Link to="/signup">회원가입하러가기</Link>
+            <div className="damding-signupbutton"><Link to="/signup">회원가입하러가기</Link>
             </div>
 
                 </Paper>
@@ -206,5 +225,13 @@ function mapStateToProps(state) {
       isAuthenticated: state.auth.isAuthenticated
     };
   }
+
+// default setting
+Authentication.defaultProps = {
+  mode: true,
+  onLogin: (id, pw) => {
+    console.log("login function not defined");
+  }
+}
 
 export default withStyles(styles)(connect(mapStateToProps)(Authentication));

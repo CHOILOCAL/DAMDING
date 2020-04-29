@@ -18,6 +18,8 @@ class LoginContainer extends Component {
             user: '', // 로그인/로그아웃 구분
             mode: '' // 로그인/회원가입 구분
         };
+        console.log('LoginContainer this.state.user : ', this.state.user);
+        console.log('LoginContainer this.state.mode : ', this.state.mode);
     }
 
     handleLogout = () => {
@@ -27,17 +29,17 @@ class LoginContainer extends Component {
 
     render() {
 
-        const { isLoggingOut, logoutError } = this.props;
+        // const { isLoggingOut, logoutError } = this.props;
 
         return (
             <div>
                 <Header user={false}/>
 
-                <Authentication mode={true} />
+                <Authentication mode={true} user={false}/>
 
-                <button onClick={this.handleLogout}>Logout</button>
+                {/* <button onClick={this.handleLogout}>Logout</button>
                 {isLoggingOut && <p>Logging Out....</p>}
-                {logoutError && <p>Error logging out</p>}
+                {logoutError && <p>Error logging out</p>} */}
 
                 <Footer/>
             </div>
@@ -53,7 +55,7 @@ function mapStateToProps(state) {
   }
 
 LoginContainer.defaultProps = {
-    mode: false
+    mode: true
 }
 
 // export default LoginContainer;
