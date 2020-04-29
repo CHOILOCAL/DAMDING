@@ -59,6 +59,8 @@ class Header extends React.Component {
 
     render() {
 
+        const { isLoggingOut, logoutError } = this.props;
+
         // 로그인 전
         const loginButton = (
             <div>
@@ -76,13 +78,12 @@ class Header extends React.Component {
         const logoutButton = (
             <Link to="/main">
                 <Button variant="light" onClick={this.handleLogout} className="logoutButton">로그아웃</Button>
+                {isLoggingOut && <p>Logging Out....</p>}
+                {logoutError && <p>Error logging out</p>}
             </Link>
         );
-
-        const { isLoggingOut, logoutError } = this.props;
-
+ 
         return (
-
             <div>
             {/* 시작 */}
                 <Navbar bg="" expand="lg">
@@ -111,9 +112,7 @@ class Header extends React.Component {
                                 this.state.isLoggerd ? logoutButton : loginButton
                             }
                         </Form>
-                        <button onClick={this.handleLogout}>Logout</button>
-                {isLoggingOut && <p>Logging Out....</p>}
-                {logoutError && <p>Error logging out</p>}
+                        {/* <button onClick={this.handleLogout}>Logout</button> */}
                     </Navbar.Collapse>
                 </Navbar>
 

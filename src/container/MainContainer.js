@@ -19,16 +19,6 @@ import {auth} from '../Firebase';
 
 class MainContainer extends Component {
 
-    // constructor(props){
-    //     super(props);
-
-    //     console.log('main email : ', this.props.email);
-    //     console.log('main password : ', this.props.password);
-    //     console.log('main mode : ', this.props.mode);
-    //     console.log('main user : ', this.props.user);
-
-    // }
-
     constructor(props) {
         super(props);
         this.state = {
@@ -39,38 +29,26 @@ class MainContainer extends Component {
     }
     
     componentDidMount(props) {
-
-        console.log('componentDidMount isLoggerd', this.state.isLoggerd)
-            
+        // 로그인 세션 or 토큰이 있는지 확인
         auth.onAuthStateChanged((user) => {
             if (user) { // user가 있으면 
                 this.setState({user});
                 console.log('로그인 user 있음 ?', user);
-                this.state.setState({
-                    isLoggerd: true
-                })
+                this.setState({ isLoggerd: true });
+                console.log('로그인 상태입니다.', this.state.isLoggerd);
             } else { // user가 없으면
-                this.state = {
-                    isLoggerd: false
-                }
-
+                this.setState({ isLoggerd: false });
+                console.log('로그아웃 상태입니다', this.state.isLoggerd);
             }
         });
-        
-        console.log('********* user check *****', this.state.isLoggerd);
     }
-    render() {
 
-        // 현재 로그인 상태 체크
-        let re = /(login|register)/;
-        let isAuth = re.test(this.props.location.pathname);
+    render() {
 
         return (
             <div>
                 {/* fixed Header */}
-                {/* {isAuth ? undefined : <Header /> */}
-                <Header />
-                {/* { this.props.children } 내가 지정한 라우트가 표시됨 */}
+                <Header isLoggerd={'isLoggerd'}/>
 
                 {/* Video */}
                 <Gnb/>
@@ -88,10 +66,6 @@ class MainContainer extends Component {
             </div>
         )
     }
-
-
 }
-
-
 
 export default MainContainer;

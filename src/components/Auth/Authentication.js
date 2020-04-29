@@ -26,6 +26,10 @@ import Typography from "@material-ui/core/Typography";
 import Paper from "@material-ui/core/Paper";
 import Container from "@material-ui/core/Container";
 
+
+import {Form, Col} from 'react-bootstrap';
+
+
 // 로그인 스타일
 const styles = () => ({
     "@global": {
@@ -59,8 +63,8 @@ class Authentication extends React.Component {
 
     constructor(props) {
         super(props);
-
         // console.log('this.props.mode $', this.props.mode); // false
+        console.log('mode value (signup: true, login: false): ', this.props.mode);
 
         this.state = {
             username: '',
@@ -68,11 +72,6 @@ class Authentication extends React.Component {
             user: null, // 처음 로그인시에는 로그인되어있지 않은 상태
             mode: '',
         };
-
-        // console.log('this.props.username', this.props.username);
-        // console.log('this.props.password', this.props.password);
-        // console.log('this.props.user', this.props.user);
-        // console.log('this.props.mode', this.props.mode); // false
     }
 
     componentDidMount() {
@@ -138,10 +137,67 @@ class Authentication extends React.Component {
     
     render() {
 
+      // 공통 뷰
+      const commonInputBox = (
+        <div className="input-field col s12">
+        <div className="basicinfo-input-id">
+            <label>아이디</label>
+            <input
+                name="username"
+                type="email"
+                className="validate"
+                placeholder="아이디를 입력해주세요."
+                value={this.state.username}/>
+        </div>
+        </div>
+    )
+
+      // 회원가입 뷰
+      const signupView = (
+
+        <div className="view-row">
+
+                {/* 공통 <div /> */}
+                {commonInputBox}
+
+                <div className="input-field col s12">
+                    <label>비밀번호</label>
+                    <input name="password" type="password" className="validate" placeholder="비밀번호를 입력해주세요."/>
+                </div>
+
+                <div className="input-field col s12">
+                    <label>비밀번호확인</label>
+                    <input
+                        name="passwordCheck"
+                        type="password"
+                        className="validate"
+                        placeholder="비밀번호를 다시 입력해주세요."/>
+                </div>
+                <div className="input-field col s12">
+                    <Form.Row>
+                        <Form.Group as={Col} controlId="formGridState">
+                            <Form.Label>국가</Form.Label>
+                            <Form.Control as="select" value="Choose..." className="formcontrol-css">
+                                <option>-</option>
+                                <option>대한민국</option>
+                                <option>몽골</option>
+                            </Form.Control>
+                        </Form.Group>
+                    </Form.Row>
+                </div>
+
+                <Form.Group id="formGridCheckbox">
+                    <Form.Check type="checkbox" label="담딩투어 경험이 있으시면 체크해주세요. "/>
+                </Form.Group>
+
+                <a className="waves-effect waves-light btn">회원가입</a>
+            </div>
+      );
+
         const { classes, loginError, isAuthenticated } = this.props;
 
         if (isAuthenticated) {
-            console.log('로그인 상태입니다');
+            console.log('로그인 성공');
             return <Redirect to="/main" />; // login시 main페이지로 리다이렉트
         } else {
             return (
@@ -211,11 +267,9 @@ class Authentication extends React.Component {
                 </Paper>
                 </Container>
             )
-        }
     }
+  }
 }
-
-    
 
 // Login
 function mapStateToProps(state) {

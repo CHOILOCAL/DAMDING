@@ -14,7 +14,7 @@ class SignupContainer extends Component {
             <div>
                 <Header />
 
-                <Authentication mode={false} />
+                <Authentication mode={true} />
 
                 <Footer/>
             </div>
