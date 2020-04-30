@@ -71,7 +71,7 @@ class Header extends React.Component {
             <Link to="/signup" style={{paddingLeft: '10px'}}>
             <Button variant="light" onClick={this.signup} className="signupButton">회원가입</Button>
             </Link>
-            </div>
+            </div>  
         );
 
         // 로그인 후

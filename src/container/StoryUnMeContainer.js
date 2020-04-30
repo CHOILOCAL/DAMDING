@@ -38,9 +38,9 @@ class StoryUnMeContainer extends Component {
             warningVisibility: false,
             
             // map gl
-            lng: 98.345, // 위도
-            lat: 46.035, // 경도
-            zoom: 4.14 // 줌
+            lng: 106.345, // 위도
+            lat: 48.035, // 경도
+            zoom: 5.9 // 줌
         };
         console.log("post : " + this.state.post);
         console.log("post > title : " + this.state.post.title);
@@ -112,6 +112,8 @@ class StoryUnMeContainer extends Component {
 
         // 지도 표시 마커
         var marker = new mapboxgl.Marker().setLngLat([107.42256, 47.90075]).addTo(map); // 테를지
+        var marker2 = new mapboxgl.Marker().setLngLat([100.42256, 47.90075]).addTo(map); // 테를지
+
     }
 
     // NavigateClick METHOD
