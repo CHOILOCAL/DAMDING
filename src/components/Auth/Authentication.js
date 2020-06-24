@@ -26,9 +26,9 @@ import Typography from "@material-ui/core/Typography";
 import Paper from "@material-ui/core/Paper";
 import Container from "@material-ui/core/Container";
 
-
 import {Form, Col} from 'react-bootstrap';
 
+import {kakaoImage} from '../../image/Kakao_CI.jpg'
 
 // 로그인 스타일
 const styles = () => ({
@@ -98,7 +98,6 @@ class Authentication extends React.Component {
 
     // google 로그인
     googleLogin = (e) => {
-
         // Google API
         auth
             .signInWithPopup(provider)
@@ -108,6 +107,16 @@ class Authentication extends React.Component {
             });
 
             // console.log("auth ::: ", auth);
+    }
+
+    // Kakao 로그인
+    kakaoLogin = (e) => {
+      // Kakao Api
+    }
+
+    // naver 로그인
+    NaverLogin = (e) => {
+      // naver Api
     }
 
     handleChange(e) {
@@ -206,7 +215,6 @@ class Authentication extends React.Component {
                 <Avatar className={classes.avatar}>
                 <LockOutlinedIcon />
                 </Avatar>
-
                 <Typography component="h1" variant="h5">
               로그인
             </Typography>
@@ -216,7 +224,7 @@ class Authentication extends React.Component {
               margin="normal"
               fullWidth
               id="email"
-              label="Email Address"
+              label="이메일"
               name="email"
               onChange={this.handleEmailChange}
             />
@@ -225,7 +233,7 @@ class Authentication extends React.Component {
               margin="normal"
               fullWidth
               name="password"
-              label="Password"
+              label="비밀번호"
               type="password"
               id="password"
               onChange={this.handlePasswordChange}
@@ -259,6 +267,21 @@ class Authentication extends React.Component {
               구글 로그인
             </Button>
             {/* </div> */}
+
+            <a id="custom-login-btn" href="javascript:loginWithKakao()">
+              <img src="//k.kakaocdn.net/14/dn/btqCn0WEmI3/nijroPfbpCa4at5EIsjyf0/o.jpg" width="200px" height="40px" />
+            </a>
+            <p id="token-result"></p>
+
+            <Button
+              type="button"
+              fullWidth
+              variant="outlined"
+              color=""
+              onClick={this.kakaoLogin}
+            >
+            네이버 로그인
+            </Button>
 
             {/* 회원가입 안내 */}
             <div className="damding-signupbutton"><Link to="/signup">회원가입하러가기</Link>

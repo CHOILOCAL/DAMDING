@@ -1,12 +1,13 @@
 // DB Mongoose, DB session
 import mongoos from 'mongoose';
 import session from 'express-session';
-
-//  API ROUTER 
 import api from '../routes';
 
 var express = require('express');
 var app = express();
+
+const PORT = 5000;
+
 var user = require('../routes/user');
 
 var morgan = require('morgan');
@@ -27,21 +28,14 @@ app.use('/', express.static('public'));
 // app.use(myLogger);
 
 app.get('/', function(req, res){
-    //
     res.send('hello world');
 });
 
 app.use('/user', user);
 
-app.listen(3000, function(){
-    console.log('example router is listening on port 3000 🟩');
+app.listen(PORT, function(){
+    console.log('Damdeeng Tour by choilocal is listening on port 5000 🟩');
 });
-
-// *************************
-// *** 2020. 04. 17. *******
-// *** author. hjchoi ******
-// *** mongo DB connection *
-// *************************
 
 // mongo db connection
 const db = mongoos.connection;
@@ -58,11 +52,6 @@ app.use(session({
     saveUninitialized: true
 }));
 
-// *************************
-// *** 2020. 04. 17. *******
-// *** author. hjchoi ******
-// * api router connection *
-// *************************
 app.use('/api', api);
 
 /* handle error */
